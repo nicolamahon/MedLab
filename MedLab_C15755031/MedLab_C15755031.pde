@@ -1,28 +1,38 @@
 void setup()
 {
-  size(800, 600); 
+  size(1200, 600); 
+  
 }
+
 
 void draw()
 {
-  strokeWeight(3);
+  drawGrid();
+}
+
+void drawGrid()
+{
+  stroke(255);
+  background(0);
+  strokeWeight(5);
+  
   // top-left grid
-  line(300, 0, 300, 100);
-  line(300, 100, 200, 200);  
-  line(200, 200, 0, 200);
+  line(width/3, 0, width/3, height/6);
+  line(width/3, height/6, width/4, height/3);  
+  line(width/4, height/3, 0, height/3);
   
   // top-right grid
-  line(500, 0, 500, 100);
-  line(500, 100, 600, 200);  
-  line(600, 200, width, 200); 
+  line(width-width/3, 0, width-width/3, height/6);
+  line(width-width/3, height/6, width-width/4, height/3);  
+  line(width-width/4, height/3, width, height/3);
   
   // bottom-left grid
-  line(0, 400, 200, 400);
-  line(200, 400, 300, 500);  
-  line(300, 500, 300, height);
-  
+  line(0, height-height/3, width/4, height-height/3);
+  line(width/4, height-height/3, width/3, height-height/6);  
+  line(width/3, height-height/6, width/3, height);
+
   // bottom-right grid
-  line(width, 400, 600, 400);
-  line(600, 400, 500, 500);  
-  line(500, 500, 500, height); 
+  line(width, height-height/3, width-width/4, height-height/3);
+  line(width-width/4, height-height/3, width-width/3, height-height/6);  
+  line(width-width/3, height-height/6, width-width/3, height); 
 }
