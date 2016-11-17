@@ -28,8 +28,6 @@ void mouseClicked()
     if(mouseY >=0 && mouseY <= height/3)
     {
       background(255, 0, 0);
-      stroke(255);
-      strokeWeight(5);
       drawAllGrids();
       
       // do graph here
@@ -42,8 +40,6 @@ void mouseClicked()
     if(mouseY >=0 && mouseY <= height/3)
     {
       background(0, 0, 255);
-      stroke(255);
-      strokeWeight(5);
       drawAllGrids();
     
       // do graph here
@@ -56,8 +52,6 @@ void mouseClicked()
      if(mouseY <= height && mouseY >= height-height/3)
     {
       background(0, 255, 0);
-      stroke(255);
-      strokeWeight(5);
       drawAllGrids();
     
       // do graph here
@@ -70,8 +64,6 @@ void mouseClicked()
      if(mouseY <= height && mouseY >= height-height/3)
     {
       background(0, 255, 255);
-      stroke(255);
-      strokeWeight(5);
       drawAllGrids();
  
       // do graph here
