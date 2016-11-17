@@ -30,6 +30,7 @@ void mouseClicked()
     {
       background(255, 0, 0);
       drawAllGrids();
+      drawBar();
       
       // do graph here
     }
@@ -42,7 +43,8 @@ void mouseClicked()
     {
       background(0, 0, 255);
       drawAllGrids();
-    
+      drawBar();
+      
       // do graph here
     }
   }
@@ -54,7 +56,8 @@ void mouseClicked()
     {
       background(0, 255, 0);
       drawAllGrids();
-    
+      drawBar();
+      
       // do graph here
     }
   }
@@ -66,7 +69,8 @@ void mouseClicked()
     {
       background(0, 255, 255);
       drawAllGrids();
- 
+      drawBar();
+      
       // do graph here
     }
   }
@@ -100,7 +104,7 @@ void drawAllGrids()
 
 void drawBar()
 {
-  stroke(0, 255, 0);
+  stroke(255, 0, 255);
   line(50, 150, 250, 150);
   fill(255);
   
@@ -110,4 +114,8 @@ void drawBar()
   rect(150, 60, 25, 90);
   rect(175, 90, 25, 60);
   rect(200, 50, 25, 100);
+  
+  textSize(30); 
+  text("Blood Pressure", 50, 180);
+  
 }
