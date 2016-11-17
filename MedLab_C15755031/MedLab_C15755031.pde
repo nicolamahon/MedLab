@@ -1,12 +1,21 @@
 void setup()
 {
-  size(1200, 600); 
+  size(1200, 600);
+  background(0);
   drawAllGrids();
 }
 
 
 void draw()
 {
+  if (millis() < 3000)//in milliseconds
+  {
+    //display splash screen
+  }
+  else {
+    //rest of the code
+    
+  }
   
 }
 
@@ -19,6 +28,10 @@ void mouseClicked()
     if(mouseY >=0 && mouseY <= height/3)
     {
       background(255, 0, 0);
+      stroke(255);
+      strokeWeight(5);
+      drawAllGrids();
+      
       // do graph here
     }
   }
@@ -29,6 +42,10 @@ void mouseClicked()
     if(mouseY >=0 && mouseY <= height/3)
     {
       background(0, 0, 255);
+      stroke(255);
+      strokeWeight(5);
+      drawAllGrids();
+    
       // do graph here
     }
   }
@@ -39,6 +56,10 @@ void mouseClicked()
      if(mouseY <= height && mouseY >= height-height/3)
     {
       background(0, 255, 0);
+      stroke(255);
+      strokeWeight(5);
+      drawAllGrids();
+    
       // do graph here
     }
   }
@@ -49,6 +70,10 @@ void mouseClicked()
      if(mouseY <= height && mouseY >= height-height/3)
     {
       background(0, 255, 255);
+      stroke(255);
+      strokeWeight(5);
+      drawAllGrids();
+ 
       // do graph here
     }
   }
@@ -57,7 +82,6 @@ void mouseClicked()
 void drawAllGrids()
 {
   stroke(255);
-  background(0);
   strokeWeight(5);
   
   drawGridTL();
