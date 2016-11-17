@@ -122,5 +122,9 @@ void drawBar()
   
   textFont(font, 30); 
   text("Blood Pressure", 50, 180);
+}
+
+void drawWave()
+{
   
 }
