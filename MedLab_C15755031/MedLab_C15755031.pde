@@ -3,6 +3,7 @@ void setup()
   size(1200, 600);
   background(0);
   drawAllGrids();
+  drawBar();
 }
 
 
@@ -95,4 +96,18 @@ void drawAllGrids()
   line(width, height-height/3, width-width/4, height-height/3);
   line(width-width/4, height-height/3, width-width/3, height-height/6);  
   line(width-width/3, height-height/6, width-width/3, height);  
+}
+
+void drawBar()
+{
+  stroke(0, 255, 0);
+  line(50, 150, 250, 150);
+  fill(255);
+  
+  rect(75, 50, 25, 100);
+  rect(100, 30, 25, 120);
+  rect(125, 70, 25, 80);
+  rect(150, 60, 25, 90);
+  rect(175, 90, 25, 60);
+  rect(200, 50, 25, 100);
 }
