@@ -2,9 +2,14 @@ void setup()
 {
   size(1200, 600);
   background(0);
+  font = loadFont("SegoeUISymbol-30.vlw");
   drawAllGrids();
   drawBar();
+  
 }
+
+PFont font;
+
 
 
 void draw()
@@ -115,7 +120,7 @@ void drawBar()
   rect(175, 90, 25, 60);
   rect(200, 50, 25, 100);
   
-  textSize(30); 
+  textFont(font, 30); 
   text("Blood Pressure", 50, 180);
   
 }
