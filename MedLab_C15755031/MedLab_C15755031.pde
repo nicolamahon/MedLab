@@ -5,6 +5,7 @@ void setup()
   font = loadFont("SegoeUISymbol-30.vlw");
   drawAllGrids();
   drawBar();
+  drawWave();
   
 }
 
@@ -36,7 +37,7 @@ void mouseClicked()
       background(255, 0, 0);
       drawAllGrids();
       drawBar();
-      
+      drawWave();
       // do graph here
     }
   }
@@ -49,7 +50,7 @@ void mouseClicked()
       background(0, 0, 255);
       drawAllGrids();
       drawBar();
-      
+      drawWave();
       // do graph here
     }
   }
@@ -62,7 +63,7 @@ void mouseClicked()
       background(0, 255, 0);
       drawAllGrids();
       drawBar();
-      
+      drawWave();
       // do graph here
     }
   }
@@ -75,7 +76,7 @@ void mouseClicked()
       background(0, 255, 255);
       drawAllGrids();
       drawBar();
-      
+      drawWave();
       // do graph here
     }
   }
@@ -109,22 +110,34 @@ void drawAllGrids()
 
 void drawBar()
 {
+ 
+  PImage barChartIMG;
+  barChartIMG = loadImage("miniBar_chart.jpg");
+  image(barChartIMG, 55, 20);
+  
+  /*
   stroke(255, 0, 255);
   line(50, 150, 250, 150);
   fill(255);
-  
+   
   rect(75, 50, 25, 100);
   rect(100, 30, 25, 120);
   rect(125, 70, 25, 80);
   rect(150, 60, 25, 90);
   rect(175, 90, 25, 60);
   rect(200, 50, 25, 100);
+  */
   
   textFont(font, 30); 
-  text("Blood Pressure", 50, 180);
+  text("Blood Pressure", 48, 180);
 }
 
 void drawWave()
 {
+  PImage waveIMG;
+  waveIMG = loadImage("miniDNA_wave.jpg");
+  image(waveIMG, 930, 27);
   
+  textFont(font, 30); 
+  text("DNA Scan", 960, 180);
 }
