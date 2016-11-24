@@ -4,15 +4,21 @@ void setup()
   background(0);
   font_1 = loadFont("SegoeUISymbol-30.vlw");
   font_2 = createFont("Okuda", 32);
+  font_main = createFont("Finalnew.ttf", 50);
   
   drawAllGrids();
   drawBar();
   drawWave();
   
+  textFont(font_main);
+  textSize(100);
+  text("HELLO HUMAN", 200, (height/2)+40);
+  
 }
 
 PFont font_1;
 PFont font_2;
+PFont font_main;
 
 
 
