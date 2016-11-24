@@ -17,19 +17,21 @@ PFont font_main;
 void draw()
 {
   
-  if (frameCount < 300)//in milliseconds
+  if (frameCount < 120)
   {
     //display splash screen
     splash1();
   }
-  else {
-    background(0);
-    splash2();
+  else
+  {
     //rest of the code
-  
-    //drawAllGrids();
-    //drawBar();
-    //drawWave();
+    background(0);
+    drawAllGrids();
+    drawBar();
+    drawWave();
+    mainMenu();
+    manHead();
+    
   }
   
   
@@ -37,17 +39,64 @@ void draw()
 
 void splash2()
 {
-  //background(0);
+  background(0);
+  manHead();
+  manTable();
+  mainMenu();
+  
+}
+
+
+
+// printing the manifest header 
+void manHead()
+{ 
+  float y = height/12;
+  stroke(255);
+  fill(123, 123, 123);
+  rect(440, 57, 320, 50);
+  fill(255,223,0);
+  textFont(font_sign, 48); 
+  text("CREW MANIFEST", width/2, y+50);
+}
+
+// printing the manifest table background
+void manTable()
+{
   float x = width/4;
-  float y = height/4;
-  
-  
+  float y = height/12;
   
   PImage loadIMG;
   loadIMG = loadImage("star-trek-online-logo.jpg");
-  image(loadIMG, x,y);
+  image(loadIMG, x,y-y);
   
+  // printing arrayList of crew here
+  // void crewMan();
+  //
+  //
+  //
   
+}
+
+// printing each crew member details
+void crewMan()
+{
+  
+}
+
+
+
+
+
+void mainMenu()
+{
+  stroke(255);
+  fill(123, 123, 123);
+  rect(500, 503, 200, 50);
+  fill(255,223,0);
+  stroke(0);
+  textFont(font_sign, 36); 
+  text("MAIN MENU", width/2, height-height/10);
 }
 
 void splash1()
@@ -58,6 +107,7 @@ void splash1()
   textFont(font_main);
   textSize(75);
   textAlign(CENTER);
+  fill(255,223,0);
   text("United Federation of Planets", x, y);
   text("StarFleet MedLab", x, y+75);
   
@@ -69,7 +119,7 @@ void splash1()
 }
 
 
-void mouseClicked() 
+void mousePressed() 
 {
   // top left grid
   if (mouseX >=0 && mouseX <= width/3) 
@@ -122,6 +172,16 @@ void mouseClicked()
       // do graph here
     }
   }
+  
+  // bottom center grid i.e. main menu button
+  if (mouseX > width/3 && mouseX < width-width/3) 
+  {
+     if(mouseY <= height && mouseY >= height-height/3)
+    {
+      splash2();
+      // do graph here
+    }
+  }
 } // end mouseClicked()
 
 void drawAllGrids()
@@ -168,15 +228,15 @@ void drawBar()
 
 void drawWave()
 {
-  float cx = 55;
-  float cy = 20;
-  float tx = 140;
+  float cx = 930;
+  float cy = 27;
+  float tx = 960;
   float ty = 180;
   
   PImage waveIMG;
   waveIMG = loadImage("miniDNA_wave.jpg");
-  image(waveIMG, 930, 27);
+  image(waveIMG, cx, cy);
   
   textFont(font_sign, 32); 
-  text("DNA Scan", 960, 180);
+  text("DNA Scan", tx, ty);
 }
