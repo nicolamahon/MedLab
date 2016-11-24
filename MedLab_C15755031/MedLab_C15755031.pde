@@ -2,14 +2,17 @@ void setup()
 {
   size(1200, 600);
   background(0);
-  font = loadFont("SegoeUISymbol-30.vlw");
+  font_1 = loadFont("SegoeUISymbol-30.vlw");
+  font_2 = createFont("Okuda", 32);
+  
   drawAllGrids();
   drawBar();
   drawWave();
   
 }
 
-PFont font;
+PFont font_1;
+PFont font_2;
 
 
 
@@ -115,20 +118,7 @@ void drawBar()
   barChartIMG = loadImage("miniBar_chart.jpg");
   image(barChartIMG, 55, 20);
   
-  /*
-  stroke(255, 0, 255);
-  line(50, 150, 250, 150);
-  fill(255);
-   
-  rect(75, 50, 25, 100);
-  rect(100, 30, 25, 120);
-  rect(125, 70, 25, 80);
-  rect(150, 60, 25, 90);
-  rect(175, 90, 25, 60);
-  rect(200, 50, 25, 100);
-  */
-  
-  textFont(font, 30); 
+  textFont(font_2, 46); 
   text("Blood Pressure", 48, 180);
 }
 
@@ -138,6 +128,6 @@ void drawWave()
   waveIMG = loadImage("miniDNA_wave.jpg");
   image(waveIMG, 930, 27);
   
-  textFont(font, 30); 
+  textFont(font_2, 46); 
   text("DNA Scan", 960, 180);
 }
