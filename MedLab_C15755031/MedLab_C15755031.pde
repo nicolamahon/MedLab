@@ -1,7 +1,8 @@
 void setup()
 {
-  size(1200, 600);
   background(0);
+  size(1200, 600);
+  
   font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
   
@@ -15,35 +16,55 @@ PFont font_main;
 
 void draw()
 {
-  /*
+  
   if (frameCount < 300)//in milliseconds
   {
     //display splash screen
-    splash();
+    splash1();
   }
   else {
-    */
-    //rest of the code
     background(0);
-    drawAllGrids();
-    drawBar();
-    drawWave();
-    
+    splash2();
+    //rest of the code
+  
+    //drawAllGrids();
+    //drawBar();
+    //drawWave();
+  }
   
   
 }
 
-void splash()
+void splash2()
+{
+  //background(0);
+  float x = width/4;
+  float y = height/4;
+  
+  
+  
+  PImage loadIMG;
+  loadIMG = loadImage("star-trek-online-logo.jpg");
+  image(loadIMG, x,y);
+  
+  
+}
+
+void splash1()
 {
   float x = width/2;
-  float y = 250;
+  float y = 400;
   background(0);
   textFont(font_main);
-  textSize(100);
+  textSize(75);
   textAlign(CENTER);
-  text("Welcome to", x, y);
-  text("StarFleet", x, y+75);
-  text("MedLab", x, y+150);
+  text("United Federation of Planets", x, y);
+  text("StarFleet MedLab", x, y+75);
+  
+  PImage mainLogo;
+  mainLogo = loadImage("UFP_Logo_Main.jpg");
+  image(mainLogo, x-170,70);
+  
   
 }
 
