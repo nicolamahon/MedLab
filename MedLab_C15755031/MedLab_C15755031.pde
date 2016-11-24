@@ -2,36 +2,48 @@ void setup()
 {
   size(1200, 600);
   background(0);
-  font_1 = loadFont("SegoeUISymbol-30.vlw");
-  font_2 = createFont("Okuda", 32);
+  font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
-  
-  drawAllGrids();
-  drawBar();
-  drawWave();
-  
-  textFont(font_main);
-  textSize(100);
-  text("HELLO HUMAN", 200, (height/2)+40);
   
 }
 
-PFont font_1;
-PFont font_2;
+
+PFont font_sign;
 PFont font_main;
 
 
 
 void draw()
 {
-  if (millis() < 3000)//in milliseconds
+  /*
+  if (frameCount < 300)//in milliseconds
   {
     //display splash screen
+    splash();
   }
   else {
+    */
     //rest of the code
+    background(0);
+    drawAllGrids();
+    drawBar();
+    drawWave();
     
-  }
+  
+  
+}
+
+void splash()
+{
+  float x = width/2;
+  float y = 250;
+  background(0);
+  textFont(font_main);
+  textSize(100);
+  textAlign(CENTER);
+  text("Welcome to", x, y);
+  text("StarFleet", x, y+75);
+  text("MedLab", x, y+150);
   
 }
 
@@ -119,21 +131,31 @@ void drawAllGrids()
 
 void drawBar()
 {
- 
+  float cx = 55;
+  float cy = 20;
+  float tx = 140;
+  float ty = 180;
+  
   PImage barChartIMG;
   barChartIMG = loadImage("miniBar_chart.jpg");
-  image(barChartIMG, 55, 20);
+  image(barChartIMG, cx, cy);
   
-  textFont(font_2, 46); 
-  text("Blood Pressure", 48, 180);
+  textAlign(CENTER);
+  textFont(font_sign, 32);
+  text("Blood Pressure", tx, ty);
 }
 
 void drawWave()
 {
+  float cx = 55;
+  float cy = 20;
+  float tx = 140;
+  float ty = 180;
+  
   PImage waveIMG;
   waveIMG = loadImage("miniDNA_wave.jpg");
   image(waveIMG, 930, 27);
   
-  textFont(font_2, 46); 
+  textFont(font_sign, 32); 
   text("DNA Scan", 960, 180);
 }
