@@ -6,6 +6,7 @@ void setup()
   font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
   
+  
 }
 
 
@@ -25,13 +26,16 @@ void draw()
   else
   {
     //rest of the code
+    /*
     background(0);
     drawAllGrids();
     drawBar();
     drawWave();
     mainMenu();
     manHead();
-    
+    */
+    background(0);
+    splash2();
   }
   
   
@@ -39,9 +43,9 @@ void draw()
 
 void splash2()
 {
-  background(0);
-  manHead();
+  //background(0);
   manTable();
+  manHead();
   mainMenu();
   
 }
@@ -54,21 +58,30 @@ void manHead()
   float y = height/12;
   stroke(255);
   fill(123, 123, 123);
-  rect(440, 57, 320, 50);
+  pushMatrix();
+  translate(width*0.35, height*0.1);
+  rect(0, 0, 320, 50);
+  popMatrix();
+  
   fill(255,223,0);
-  textFont(font_sign, 48); 
-  text("CREW MANIFEST", width/2, y+50);
+  textFont(font_sign, 48);
+  pushMatrix();
+  translate(width*0.48, height*0.17);
+  text("CREW MANIFEST", 0, 0);
+  popMatrix();
 }
 
 // printing the manifest table background
 void manTable()
 {
-  float x = width/4;
-  float y = height/12;
+  
   
   PImage loadIMG;
-  loadIMG = loadImage("star-trek-online-logo.jpg");
-  image(loadIMG, x,y-y);
+  loadIMG = loadImage("comm.jpg");
+  pushMatrix();
+  translate(width*0.39, height*0.12);
+  image(loadIMG, 0,0);
+  popMatrix();
   
   // printing arrayList of crew here
   // void crewMan();
@@ -81,6 +94,9 @@ void manTable()
 // printing each crew member details
 void crewMan()
 {
+  // loop 
+  // print rect(x,y)
+  // increment y inside loop
   
 }
 
@@ -96,7 +112,10 @@ void mainMenu()
   fill(255,223,0);
   stroke(0);
   textFont(font_sign, 36); 
-  text("MAIN MENU", width/2, height-height/10);
+  pushMatrix();
+  translate(width*0.5, height*0.9);
+  text("MAIN MENU", 0, 0);
+  popMatrix();
 }
 
 void splash1()
@@ -130,6 +149,8 @@ void mousePressed()
       drawAllGrids();
       drawBar();
       drawWave();
+      mainMenu();
+      manHead();
       // do graph here
     }
   }
@@ -143,6 +164,8 @@ void mousePressed()
       drawAllGrids();
       drawBar();
       drawWave();
+      mainMenu();
+      manHead();
       // do graph here
     }
   }
@@ -156,6 +179,8 @@ void mousePressed()
       drawAllGrids();
       drawBar();
       drawWave();
+      mainMenu();
+      manHead();
       // do graph here
     }
   }
@@ -169,6 +194,19 @@ void mousePressed()
       drawAllGrids();
       drawBar();
       drawWave();
+      mainMenu();
+      manHead();
+      // do graph here
+    }
+  }
+  
+  // top center grid i.e. crew manifest button
+  if (mouseX > width/3 && mouseX < width-width/3) 
+  {
+     if(mouseY < height/3 && mouseY > 0)
+    {
+      background(0);
+      splash2();
       // do graph here
     }
   }
@@ -178,8 +216,16 @@ void mousePressed()
   {
      if(mouseY <= height && mouseY >= height-height/3)
     {
-      splash2();
+      //background(123, 124, 178);
       // do graph here
+      
+      background(0);
+      drawAllGrids();
+      drawBar();
+      drawWave();
+      mainMenu();
+      manHead();
+      
     }
   }
 } // end mouseClicked()
