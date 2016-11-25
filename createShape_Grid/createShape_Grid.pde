@@ -1,6 +1,9 @@
 void setup()
 {
   size(1200, 600);
+  create(); 
+  shape(shape1, 0, 0);
+  shape(shape2, 0, 0);
 }
 
 PShape shape1;
@@ -8,13 +11,7 @@ PShape shape2;
 
 void draw()
 {
- create(); 
- shape(shape1, 0, 0);
- shape(shape2, 0, 0);
- 
- 
- render1();
- 
+  render();
 }
 
 void create()
@@ -44,22 +41,14 @@ void create()
   shape2.vertex(width/3, height-height/6);
   shape2.vertex(width/3, height);
   shape2.endShape();
-  
-  
 } 
 
-void render1()
+void render()
 {
   pushMatrix();
   translate(width, height);
   rotate(PI);
   shape(shape1, 0, 0);
+  shape(shape2, 0, 0);
   popMatrix();
-  
-  pushMatrix();
-  translate(width, 0);
-  rotate(PI);
-  shape(shape2, 0, height);
-  popMatrix();
-   
 } 
