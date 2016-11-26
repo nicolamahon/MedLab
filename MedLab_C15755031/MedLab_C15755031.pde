@@ -3,11 +3,12 @@ void setup()
   background(0);
   size(1200, 600);
   create();  
+  loadData();
   font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
 }
 
-
+ArrayList<Crew> data = new ArrayList<Crew>();
 
 PShape shape1;
 PShape shape2;
@@ -109,7 +110,7 @@ void crewList()
   popMatrix();
   
   // printing arrayList of crew here
-  // void crewMember();
+  crewMember();
   //
   //
   //
@@ -118,10 +119,23 @@ void crewList()
 // printing each crew member details
 void crewMember()
 {
-  // loop 
-  // print rect(x,y)
-  // increment y inside loop
-  
+  rect(width/4, height*.32, 600, 300);
+  float x = width/3;
+  float y = height*.43;
+  for(int i=data.size()-1; i>=0; i--)
+  {
+    
+    Crew c = data.get(i);
+    fill(0);
+    textAlign(CENTER);
+    text(c.id, x, y);
+    x += 200;
+    text(c.Fname, x, y);
+    x += 200;
+    text(c.Lname, x, y);
+    y += 40;
+    x = width/3;
+  }
 }
 
 
@@ -308,4 +322,18 @@ void drawWave()
   
   textFont(font_sign, 32); 
   text("DNA Scan", tx, ty);
+}
+
+void loadData()
+{
+  data.clear();
+  
+  Table t = loadTable("medRecords2.csv", "header");
+  
+  for(int i=0; i<t.getRowCount(); i++)
+  {
+    TableRow row = t.getRow(i);
+    Crew c = new Crew(row);
+    data.add(c);
+  }
 }

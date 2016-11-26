@@ -1,7 +1,7 @@
 CrewID,Rank,Position,FirstName,LastName,Birthplace,Birthdate,Age,Height,Weight,Gender,Species,SpeciesCode,BP
-SH-299-462,Lieutenant,Helm Officer,Tuvok, ,Vulcan,2264.96,106,1.83,63.05,Male,Vulcan,19,135
+SH-299-462,Lieutenant,Helm Officer,Tuvok,       ,Vulcan,2264.96,106,1.83,63.05,Male,Vulcan,19,135
 SN-617-895,Ensign,Security Officer,Sito,Jaxa,Bajor,2350.11,20,1.59,51.23,Female,Bajoran,22,153
 SC-231-427,Commander,First Officer,William ,Riker,Earth,2320.49,39,1.93,60.17,Male,Human,6,162
 SP-937-215,Captain,Commanding Officer,Jean Luc,Picard,Earth,2305.53,54,1.78,57.15,Male,Human,6,148
-SE-514-852,Senior Chief Petty Officer,Transporter Chief,Miles,Obrien,Earth,2324.81,35,1.81,59.45,Male,Human,6,165
+SE-514-852,Senior Chief Petty Officer,Transporter Chief,Miles,O'Brien,Earth,2324.81,35,1.81,59.45,Male,Human,6,165
 SD-856-276,Commander,Medical Officer,Beverly,Crusher,Luna,2317.78,42,1.73,53.29,Female,Human,6,158
