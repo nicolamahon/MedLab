@@ -2,11 +2,15 @@ void setup()
 {
   background(0);
   size(1200, 600);
-  
+  create();  
   font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
 }
 
+
+
+PShape shape1;
+PShape shape2;
 
 PFont font_sign;
 PFont font_main;
@@ -79,10 +83,9 @@ void crewTable()
   
 }
 
-// printing the crew button 
+// printing the menu/manifest buttons 
 void buttons()
 { 
- 
   stroke(255);
   strokeWeight(7);
   fill(123, 123, 123);
@@ -127,7 +130,7 @@ void crewMember()
 void mainMenu()
 {
     background(0);
-    drawAllGrids();
+    render();
     buttons();
     drawBar();
     drawWave();
@@ -179,7 +182,8 @@ void mousePressed()
      if(mouseY <= height && mouseY >= height-height/3)
     {
       background(0, 255, 0);
-      drawAllGrids();
+      
+      render();
       drawBar();
       drawWave();
       buttons();
@@ -193,7 +197,8 @@ void mousePressed()
      if(mouseY <= height && mouseY >= height-height/3)
     {
       background(0, 255, 255);
-      drawAllGrids();
+      
+      render();
       drawBar();
       drawWave();
       buttons();
@@ -228,32 +233,49 @@ void mousePressed()
   }
 } // end mouseClicked()
 
-// draw main background table
-void drawAllGrids()
+// create background shapes
+void create()
 {
-  stroke(255);
-  strokeWeight(5);
+  shape1 = createShape();
+  shape1.beginShape();
+  shape1.stroke(255);
+  shape1.noFill();
+  shape1.strokeWeight(2);
+  shape1.vertex(width/3, 0);
+  shape1.vertex(width/3, height/6);
+  shape1.vertex(width/3, height/6);
+  shape1.vertex(width/4, height/3);
+  shape1.vertex(width/4, height/3);
+  shape1.vertex(0, height/3);
+  shape1.endShape();
   
-  // top-left grid
-  line(width/3, 0, width/3, height/6);
-  line(width/3, height/6, width/4, height/3);  
-  line(width/4, height/3, 0, height/3);
+  shape2 = createShape();
+  shape2.beginShape();
+  shape2.stroke(255);
+  shape2.noFill();
+  shape2.strokeWeight(2);
+  shape2.vertex(0, height-height/3);
+  shape2.vertex(width/4, height-height/3);
+  shape2.vertex(width/4, height-height/3);
+  shape2.vertex(width/3, height-height/6);
+  shape2.vertex(width/3, height-height/6);
+  shape2.vertex(width/3, height);
+  shape2.endShape();
+} 
 
-  // top-right grid
-  line(width-width/3, 0, width-width/3, height/6);
-  line(width-width/3, height/6, width-width/4, height/3);  
-  line(width-width/4, height/3, width, height/3); 
+// draw the background grid shapes in their respective areas
+void render()
+{  
+  shape(shape1, 0, 0);
+  shape(shape2, 0, 0);
+  pushMatrix();
+  translate(width, height);
+  rotate(PI);
+  shape(shape1, 0, 0);
+  shape(shape2, 0, 0);
+  popMatrix();
+} 
 
-   // bottom-left grid
-  line(0, height-height/3, width/4, height-height/3);
-  line(width/4, height-height/3, width/3, height-height/6);  
-  line(width/3, height-height/6, width/3, height);
-
-   // bottom-right grid
-  line(width, height-height/3, width-width/4, height-height/3);
-  line(width-width/4, height-height/3, width-width/3, height-height/6);  
-  line(width-width/3, height-height/6, width-width/3, height);  
-}
 
 // image as part of main menu
 void drawBar()
