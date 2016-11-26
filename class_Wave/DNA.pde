@@ -1,4 +1,4 @@
-class Wave
+class DNA
 {
   int xspacing;   // How far apart should each horizontal location be spaced
   int w;              // Width of entire wave
@@ -8,9 +8,9 @@ class Wave
   float period;  // How many pixels before the wave repeats
   float dx;  // Value for incrementing X, a function of period and xspacing
   float[] yvalues;  // Using an array to store height values for the wave
-
+  color c;
   
-  Wave()
+  DNA(color c)
   {
     xspacing = 16;
     w = width+16;
@@ -26,18 +26,18 @@ class Wave
     background(0);
     calcWave();
     drawGrid();
-    fill(255, 0, 0);
+    fill(c, 0, 0);
     renderWave1();
     
     pushMatrix();
     translate(0, 50);
-    fill(0, 255, 0);
+    fill(0, c, 0);
     renderWave1();
     popMatrix();
     
     pushMatrix();
     translate(0, -50);
-    fill(0, 0, 255);
+    fill(0, 0, c);
     renderWave1();
     popMatrix();
     

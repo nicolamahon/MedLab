@@ -1,5 +1,3 @@
-
-
 class Crew
 {
   String id;
@@ -15,7 +13,7 @@ class Crew
   String gender;
   String species;
   int spCode;
-  int bp;
+  float hr;
   
    Crew(TableRow row)
   {
@@ -32,10 +30,9 @@ class Crew
     gender = row.getString("Gender");
     species = row.getString("Species");
     spCode = row.getInt("SpeciesCode");
-    bp = row.getInt("BP"); 
+    hr = row.getFloat("HeartRate"); 
   }
 
-  /*
    // converts the object to a string so it can be printed
   String toString()
   {
@@ -53,15 +50,4 @@ class Crew
     + "," + species
     ;
   }
-  */
-  
-   // converts the object to a string so it can be printed
-  String toString()
-  {
-    return id 
-    + "," + Fname 
-    + "," + Lname
-    ;
-  }
-  
 }

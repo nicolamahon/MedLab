@@ -4,11 +4,15 @@ void setup()
   size(1200, 600);
   create();  
   loadData();
+  crewECG = new ECG();
   font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
 }
 
 ArrayList<Crew> data = new ArrayList<Crew>();
+ECG crewECG;
+
+int selectCrew = 4;
 
 PShape shape1;
 PShape shape2;
@@ -162,6 +166,7 @@ void sineWave()
 {
     background(0, 0, 255);
     buttons();
+    crewECG.render(data.get(selectCrew).hr);
     
     // sine wave function
 }
@@ -321,7 +326,7 @@ void drawWave()
   image(waveIMG, cx, cy);
   
   textFont(font_sign, 32); 
-  text("DNA Scan", tx, ty);
+  text("CREW ECG", tx, ty);
 }
 
 void loadData()

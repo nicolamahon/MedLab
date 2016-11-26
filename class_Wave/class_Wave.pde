@@ -1,7 +1,7 @@
 void setup() 
 {
   size(640, 360);
-  wave1 = new Wave();
+  crew = new Wave();
 }
 
 Wave wave1;
