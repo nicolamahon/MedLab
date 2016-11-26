@@ -5,15 +5,16 @@ void setup()
   
   font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
-  
-  
 }
 
 
 PFont font_sign;
 PFont font_main;
 
-
+boolean menuFlag = false;
+boolean crewFlag = false;
+boolean barFlag = false;
+boolean sineFlag = false;
 
 void draw()
 {
@@ -21,104 +22,38 @@ void draw()
   if (frameCount < 120)
   {
     //display splash screen
-    splash1();
+    splash();
   }
   else
   {
     //rest of the code
-    /*
-    background(0);
-    drawAllGrids();
-    drawBar();
-    drawWave();
-    mainMenu();
-    manHead();
-    */
-    background(0);
-    splash2();
+    //background(0);
+    crewTable();
+    
+    if (menuFlag)
+    {
+      mainMenu();
+    }
+    
+    if(crewFlag)
+    {
+      crewTable();
+    }
+    
+    if(sineFlag)
+    {
+      sineWave();
+    }
+    
+    if(barFlag)
+    {
+      barChart();
+    }
   }
-  
-  
 }
 
-void splash2()
-{
-  //background(0);
-  manTable();
-  manHead();
-  mainMenu();
-  
-}
-
-
-
-// printing the manifest header 
-void manHead()
-{ 
-  float y = height/12;
-  stroke(255);
-  fill(123, 123, 123);
-  pushMatrix();
-  translate(width*0.35, height*0.1);
-  rect(0, 0, 320, 50);
-  popMatrix();
-  
-  fill(255,223,0);
-  textFont(font_sign, 48);
-  pushMatrix();
-  translate(width*0.48, height*0.17);
-  text("CREW MANIFEST", 0, 0);
-  popMatrix();
-}
-
-// printing the manifest table background
-void manTable()
-{
-  
-  
-  PImage loadIMG;
-  loadIMG = loadImage("comm.jpg");
-  pushMatrix();
-  translate(width*0.39, height*0.12);
-  image(loadIMG, 0,0);
-  popMatrix();
-  
-  // printing arrayList of crew here
-  // void crewMan();
-  //
-  //
-  //
-  
-}
-
-// printing each crew member details
-void crewMan()
-{
-  // loop 
-  // print rect(x,y)
-  // increment y inside loop
-  
-}
-
-
-
-
-
-void mainMenu()
-{
-  stroke(255);
-  fill(123, 123, 123);
-  rect(500, 503, 200, 50);
-  fill(255,223,0);
-  stroke(0);
-  textFont(font_sign, 36); 
-  pushMatrix();
-  translate(width*0.5, height*0.9);
-  text("MAIN MENU", 0, 0);
-  popMatrix();
-}
-
-void splash1()
+// main welcome screen
+void splash()
 {
   float x = width/2;
   float y = 400;
@@ -133,11 +68,87 @@ void splash1()
   PImage mainLogo;
   mainLogo = loadImage("UFP_Logo_Main.jpg");
   image(mainLogo, x-170,70);
+}
+
+// render all crew manifest items
+void crewTable()
+{
+  background(0);
+  crewList();         // must print before crewButton
+  buttons();       // must print after crewList
   
+}
+
+// printing the crew button 
+void buttons()
+{ 
+ 
+  stroke(255);
+  strokeWeight(7);
+  fill(123, 123, 123);
+  rect(width*.4, height*.1, 260, 50);
+  rect(width*.4, height*.85, 260, 50);
+  fill(255,223,0);
+  textFont(font_sign, 48);
+  text("CREW MANIFEST", width*.51, height*.17);
+  text("MAIN MENU", width*.51, height*.92);
+}
+
+// printing the crew icon and list
+void crewList()
+{
+  background(0);
+  PImage loadIMG;
+  loadIMG = loadImage("comm.jpg");
+  pushMatrix();
+  translate(width*0.40, height*0.12);
+  image(loadIMG, 0,0);
+  popMatrix();
+  
+  // printing arrayList of crew here
+  // void crewMember();
+  //
+  //
+  //
+}
+
+// printing each crew member details
+void crewMember()
+{
+  // loop 
+  // print rect(x,y)
+  // increment y inside loop
   
 }
 
 
+
+// draws the main interactive screen
+void mainMenu()
+{
+    background(0);
+    drawAllGrids();
+    buttons();
+    drawBar();
+    drawWave();
+}
+
+void barChart()
+{
+    background(255, 0, 0);
+    buttons();
+    
+    // barchart function 
+}
+
+void sineWave()
+{
+    background(0, 0, 255);
+    buttons();
+    
+    // sine wave function
+}
+// checking for user selecting options
 void mousePressed() 
 {
   // top left grid
@@ -145,13 +156,9 @@ void mousePressed()
   {
     if(mouseY >=0 && mouseY <= height/3)
     {
-      background(255, 0, 0);
-      drawAllGrids();
-      drawBar();
-      drawWave();
-      mainMenu();
-      manHead();
-      // do graph here
+      sineFlag = false; 
+      barFlag = true;
+      // barchart function
     }
   }
   
@@ -160,13 +167,9 @@ void mousePressed()
   {
     if(mouseY >=0 && mouseY <= height/3)
     {
-      background(0, 0, 255);
-      drawAllGrids();
-      drawBar();
-      drawWave();
-      mainMenu();
-      manHead();
-      // do graph here
+      barFlag = false;
+      sineFlag = true;
+      // sine wave function
     }
   }
   
@@ -179,9 +182,8 @@ void mousePressed()
       drawAllGrids();
       drawBar();
       drawWave();
-      mainMenu();
-      manHead();
-      // do graph here
+      buttons();
+      //BP function
     }
   }
   
@@ -194,9 +196,8 @@ void mousePressed()
       drawAllGrids();
       drawBar();
       drawWave();
-      mainMenu();
-      manHead();
-      // do graph here
+      buttons();
+      // pi wave function 
     }
   }
   
@@ -205,9 +206,11 @@ void mousePressed()
   {
      if(mouseY < height/3 && mouseY > 0)
     {
-      background(0);
-      splash2();
-      // do graph here
+      menuFlag = false;
+      barFlag = false;
+      sineFlag = false;
+      
+      crewFlag = true;
     }
   }
   
@@ -216,20 +219,16 @@ void mousePressed()
   {
      if(mouseY <= height && mouseY >= height-height/3)
     {
-      //background(123, 124, 178);
-      // do graph here
+      barFlag = false;
+      sineFlag = false; 
+      crewFlag = false; 
       
-      background(0);
-      drawAllGrids();
-      drawBar();
-      drawWave();
-      mainMenu();
-      manHead();
-      
+      menuFlag = true;
     }
   }
 } // end mouseClicked()
 
+// draw main background table
 void drawAllGrids()
 {
   stroke(255);
@@ -256,6 +255,7 @@ void drawAllGrids()
   line(width-width/3, height-height/6, width-width/3, height);  
 }
 
+// image as part of main menu
 void drawBar()
 {
   float cx = 55;
@@ -272,6 +272,7 @@ void drawBar()
   text("Blood Pressure", tx, ty);
 }
 
+// image as part of main menu
 void drawWave()
 {
   float cx = 930;
