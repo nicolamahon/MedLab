@@ -218,7 +218,6 @@ void drawExit()
   text("EXIT", width-200, height-100);
   textSize(45);
   text("MEDLAB  SYSTEM", width-200, height-50);
-  
 }
 
 void myExit()
@@ -228,12 +227,14 @@ void myExit()
     PImage exitIMG;
     exitIMG = loadImage("exitSplash.png");
     image(exitIMG, 0, 0);
-    text("SYSTEM SHUTTING DOWN", width/4, 100);
+    textSize(75);
+    text("PLEASE WAIT......", 600, 90);
+    text(".....SYSTEM SHUTTING DOWN", 575, 500);
     
-    drawExit();
+    //drawExit();
     
     // delay the program exiting wihout user seeing the msg
-    if(frameCount == 120)
+    if(frameCount % 60 == 0)
     {
       exit(); // built in processing fxn to exit the program
     }
