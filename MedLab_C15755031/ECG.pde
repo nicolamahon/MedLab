@@ -17,7 +17,6 @@ class ECG
   {
     completeCycle = TWO_PI/float(distanceX);
     subCycle = (TWO_PI*5)/float(distanceX);
-    //this.WaveSpeed = WaveSpeed;
   }
  
   
@@ -82,29 +81,13 @@ class ECG
     line(50, 50, 50, height-50);
     line(50, height-50, width-50, height-50);
     line(width-50, height-50, width-50, 50);
-    textAlign(CENTER);
-    text("CREW DETAILS CREW DETAILS CREW DETAILS CREW DETAILS\t\t\t"+data.get(selectCrew).Fname, width/4, height-15);
+    
     
     fill(255);
     rect(width*.45, height*.17, 570, 400);
     fill(0);
     
-    Crew c = data.get(selectCrew);
-    fill(0);
-    textAlign(LEFT);
-    float x = width*.52;
-    float y = height*.3;
-    text("CREW MEMBER", x, y);
-    y += 40;
-    text("Name: "+c.Fname+" "+c.Lname, x, y);
-    y += 40;
-    text("Age: "+c.age, x, y);
-    y += 40;
-    text("BirthDate: "+c.birthD, x, y);
-    y += 40;
-    text("BirthPlace: "+c.birthP, x, y);
-    y += 40;
-    
-    //text(data.get(selectCrew).Fname+data.get(selectCrew).Lname, width/2, height/2);
+    data.get(selectCrew).printCrew();
+    buttons();
   }
 }

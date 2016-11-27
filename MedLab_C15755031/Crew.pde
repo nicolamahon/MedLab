@@ -14,6 +14,7 @@ class Crew
   String species;
   int spCode;
   float hr;
+  String photo;
   
    Crew(TableRow row)
   {
@@ -31,6 +32,7 @@ class Crew
     species = row.getString("Species");
     spCode = row.getInt("SpeciesCode");
     hr = row.getFloat("HeartRate"); 
+    photo = row.getString("Photo");
   }
 
    // converts the object to a string so it can be printed
@@ -50,4 +52,32 @@ class Crew
     + "," + species
     ;
   }
-}
+  
+  void printCrew()
+  {
+    Crew c = data.get(selectCrew);
+    fill(0);
+    textAlign(LEFT);
+    float x = width*.50;
+    float y = height*.3;
+    text("CREW MEMBER", x, y);
+    y += 80;
+    text("Name: "+c.Fname+" "+c.Lname, x, y);
+    y += 40;
+    text("Age: "+c.age, x, y);
+    y += 40;
+    text("BirthDate: "+c.birthD, x, y);
+    y += 40;
+    text("BirthPlace: "+c.birthP, x, y);
+    y += 40;
+    text("Weight: "+c.weight, x, y);
+    y += 40;
+    text("Species: "+c.species, x, y);
+    x += 250; 
+    y = height*.25;
+    PImage profileIMG;
+    profileIMG = loadImage(c.photo);
+    image(profileIMG, x,y);
+  }
+  
+} // end class

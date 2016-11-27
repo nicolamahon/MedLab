@@ -12,7 +12,7 @@ void setup()
 ArrayList<Crew> data = new ArrayList<Crew>();
 ECG crewECG;
 
-int selectCrew = 4;
+int selectCrew = 2;
 
 PShape shape1;
 PShape shape2;
@@ -115,9 +115,6 @@ void crewList()
   
   // printing arrayList of crew here
   crewMember();
-  //
-  //
-  //
 }
 
 // printing each crew member details
@@ -166,9 +163,9 @@ void sineWave()
 {
     background(0, 0, 255);
     buttons();
+    // pass the hr value of the selected crew member as param to fxn crewECG.render()
     crewECG.render(data.get(selectCrew).hr);
     
-    // sine wave function
 }
 // checking for user selecting options
 void mousePressed() 
