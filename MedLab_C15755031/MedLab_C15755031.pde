@@ -26,11 +26,14 @@ PShape shape2;
 PFont font_sign;
 PFont font_main;
 
-boolean menuFlag = false;
-boolean crewFlag = false;
+boolean menuFlag = false;        // if the main menu button clicked
+boolean manifestFlag = false;   // if the crew manifest button clicked
+
 boolean barFlag = false;
 boolean sineFlag = false;
 boolean bactFlag = false;
+boolean crewFlag = false;
+boolean exitFlag = false;
 
 void draw()
 {
@@ -51,7 +54,7 @@ void draw()
       mainMenu();
     }
     
-    if(crewFlag)
+    if(manifestFlag)
     {
       crewTable();
     }
@@ -69,6 +72,16 @@ void draw()
     if(bactFlag)
     {
       petri();
+    }
+    
+    if(crewFlag)
+    {
+      crewTable();
+    }
+    
+    if(exitFlag)
+    {
+      myExit();
     }
   }
 }
@@ -97,7 +110,7 @@ void crewTable()
   background(0);
   crewList();         // must print before buttons()
   buttons();       // must print after crewList()
-  
+  text("Crew Member Selected: "+ data.get(selectCrew).Fname+" "+data.get(selectCrew).Lname, 600, 110);
 }
 
 // printing the menu/manifest buttons 
@@ -138,7 +151,6 @@ void crewList()
   badge4 = loadImage("command.png");
   image(badge4, 965, 315);
   
-    
   // printing arrayList of crew here
   crewMember();
 }
@@ -146,37 +158,40 @@ void crewList()
 // printing each crew member details
 void crewMember()
 {
+  PImage bullet;
+  bullet = loadImage("bullet.png");
   rect(width/4, height*.32, 600, 300);
   float x;
   float y = height*.41;
   fill(0);
-  //textAlign(0);
-  //text("ID\t"+"Name\t"+"Rank", x, y-40);
-  for(int i=data.size()-1; i>=0; i--)
+  
+  for(int i=data.size()-1; i>0; i--)
   {
     x = width*0.28;
     Crew c = data.get(i);
     pushMatrix();
     textAlign(LEFT);
     textFont(font_sign, 26);
+    image(bullet, x, y-20);
+    x += 50;
     text(c.id, x, y);
     x += 100;
     text(c.Fname+" "+c.Lname, x, y);
     x += 130;
     text(c.rank, x, y);
-    x += 150;
-    text(c.pos, x, y);
+    x += 130;
+    text(c.pos, x, y);  
     popMatrix();
     y += 40;
   }
   textAlign(CENTER);  // ** affects formatting of buttons that come after 
 }
 
-
-
 // draws the main interactive screen
 void mainMenu()
 {
+  if(selectCrew > 0)
+  {
     background(0);
     render();
     buttons();
@@ -184,6 +199,36 @@ void mainMenu()
     drawWave();
     drawCulture();
     drawBackground();
+    drawExit();
+  }
+  else
+  {
+    // terminate program with terminate msg ************************************************************************************************
+    myExit(); //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  }
+}
+
+// draw the exit button
+void drawExit()
+{
+  fill(255,223,0);
+  textFont(font_sign, 75);
+  text("EXIT", width-200, height-100);
+  textSize(45);
+  text("MEDLAB  SYSTEM", width-200, height-50);
+  
+}
+
+void myExit()
+{
+    background(0);
+    PImage exitIMG;
+    exitIMG = loadImage("exitSplash.png");
+    image(exitIMG, 0, 0);
+    drawExit();
+    //for(int i=0;i<1000000000; i++);   // trying to delay the program exiting wihout user seeing the msg
+    delay(10000);
+    exit();
 }
 
 void barChart()
@@ -198,6 +243,7 @@ void sineWave()
 {
     background(0, 0, 255);
     buttons();
+    
     // pass the hr value of the selected crew member as param to fxn crewECG.render()
     crewECG.render(data.get(selectCrew).hr);
 }
@@ -220,6 +266,7 @@ void mousePressed()
     {
       bactFlag = false;
       sineFlag = false; 
+      
       barFlag = true;
       // barchart function
     }
@@ -251,19 +298,14 @@ void mousePressed()
     }
   }
   
-  // bottom right grid
+  // bottom right grid - TO BE CREATED
   if (mouseX <= width && mouseX >= width-width/3) 
   {
      if(mouseY <= height && mouseY >= height-height/3)
     {
       background(0, 255, 255);
-      
-      render();
-      drawBar();
-      drawWave();
-      drawCulture();
-      buttons();
-      // pi wave function 
+      drawExit();
+      exitFlag = true; 
     }
   }
  
@@ -272,12 +314,12 @@ void mousePressed()
   {
      if(mouseY < 50 && mouseY > 0)
     {
-      menuFlag = false;
       barFlag = false;
       sineFlag = false;
       bactFlag = false;
+      menuFlag = false;
       
-      crewFlag = true;
+      manifestFlag = true;
     }
   }
    
@@ -288,13 +330,86 @@ void mousePressed()
     {
       barFlag = false;
       sineFlag = false; 
-      crewFlag = false; 
       bactFlag = false;
+      manifestFlag = false; 
       
       menuFlag = true;
     }
   }
-} // end mouseClicked()
+
+  // if centre square area i.e. crew table
+  if (mouseX >330 && mouseX < 880) 
+  {
+    if (mouseY > 225 && mouseY < 245)
+    {
+      selectCrew = 6;
+    }
+    
+    if (mouseY > 265 && mouseY < 295)
+    {
+      selectCrew = 5;
+    }
+    
+    if (mouseY > 315 && mouseY < 345)
+    {
+      selectCrew = 4;
+    }
+    
+    if (mouseY > 355 && mouseY < 385)
+    {
+      selectCrew = 3;
+    }
+    
+    if (mouseY > 395 && mouseY < 425)
+    {
+      selectCrew = 2;
+    }
+    
+    if (mouseY > 435 && mouseY < 465)
+    {
+      selectCrew = 1;
+    }
+  } 
+}// end mousePressed()
+  
+  
+  /*
+  {
+    float y = 245;
+    if(mouseY < y+40)
+    {
+      selectCrew = 0;
+    }
+    
+    if(mouseY > y+40 && mouseY < y+80)
+    {
+      selectCrew = 1;
+    }
+    
+    if(mouseY > y+80 && mouseY < y+120)
+    {
+      selectCrew = 2;
+    }
+    
+    if(mouseY > y+120 && mouseY < y+160)
+    {
+      selectCrew = 3;
+    }
+    
+    if(mouseY > y+160 && mouseY < y+200)
+    {
+      selectCrew = 4;
+    }
+    
+    if(mouseY > y+200 && mouseY < y+240)
+    {
+      selectCrew = 5;
+    }
+    
+    crewFlag = true;
+  }
+  */
+
 
 // create background shapes
 void createGrid()
@@ -413,5 +528,6 @@ void loadData()
     TableRow row = t.getRow(i);
     Crew c = new Crew(row);
     data.add(c);
+    //println(c);
   }
 }

@@ -80,7 +80,7 @@ class Crew
     text("Weight: "+c.weight, x, y);
     y += 40;
     text("Species: "+c.species, x, y);
-    x += 250; 
+    x += 265; 
     y = height*.25;
     PImage profileIMG;
     profileIMG = loadImage(c.photo);
@@ -114,7 +114,7 @@ class Crew
     text("Species Code: "+c.spCode, x, y);
     y += 40;
     text("Immunised: "+c.immune, x, y);
-    x += 250; 
+    x += 265; 
     y = height*.25;
     PImage profileIMG;
     profileIMG = loadImage(c.photo);
