@@ -85,9 +85,12 @@ class ECG
     
     fill(255);
     rect(width*.45, height*.17, 570, 400);
-    fill(0);
+    //fill(0);
     
-    data.get(selectCrew).printCrew();
+    fill(255);
+    text("ECHOCARDIOGRAM", 260, 500);
+    
+    data.get(selectCrew).printCrewHR();
     buttons();
   }
 }

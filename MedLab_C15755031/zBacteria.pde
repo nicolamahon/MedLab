@@ -26,7 +26,7 @@ class Bacteria
     probabilityOfAliveAtStart = 30;
     interval = 100;
     lastRecordedTime = 0;
-    alive = color(0, 200, 0);
+    //alive = color(a, b, c);
     dead = color(0); 
     size = 60;
     cells = new int[size][size];
@@ -51,13 +51,23 @@ class Bacteria
         }
         cells[x][y] = int(state); // Save state of each cell
       }
-    }
-    //background(0); // Fill in black in case cells don't cover all the windows 
+    } 
   }
 
-  void render()
+  void render(int spCode)
   {
-    
+    if(spCode == 6)
+    {
+      alive = color(123, 0, 0);
+    }
+    else if(spCode < 6)
+    {
+      alive = color(0, 0, 123);
+    }
+    else
+    {
+      alive = color(0, 123, 0);
+    }
      //Draw grid
     for (int x=0; x<size; x++) 
     {
@@ -72,7 +82,7 @@ class Bacteria
       fill(dead); // If dead
       }
       pushMatrix();
-      translate(100, 120);
+      translate(115, 130);
       noStroke();
       rect (x*cellSize, y*cellSize, cellSize, cellSize);
       popMatrix();
@@ -160,12 +170,15 @@ class Bacteria
     line(50, height-50, width-50, height-50);
     line(width-50, height-50, width-50, 50);
     
-    
+    // text area for printing crew details
     fill(255);
     rect(width*.45, height*.17, 570, 400);
     fill(0);
     
-    data.get(selectCrew).printCrew();
+    fill(255);
+    text("BLOOD CULTURES", 260, 500);
+    
+    data.get(selectCrew).printCrewCult();
     buttons();
   }
 }

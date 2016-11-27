@@ -2,7 +2,7 @@ void setup()
 {
   background(0);
   size(1200, 600);
-  create();  
+  createGrid();  
   loadData();
   crewECG = new ECG();
   culture = new Bacteria();
@@ -16,7 +16,7 @@ ArrayList<Crew> data = new ArrayList<Crew>();
 
 ECG crewECG;
 Bacteria culture;
-int selectCrew = 2;
+int selectCrew = 0;
 
 //float BP = data.get(selectCrew).bp;
 
@@ -95,8 +95,8 @@ void splash()
 void crewTable()
 {
   background(0);
-  crewList();         // must print before crewButton
-  buttons();       // must print after crewList
+  crewList();         // must print before buttons()
+  buttons();       // must print after crewList()
   
 }
 
@@ -137,7 +137,6 @@ void crewMember()
   float y = height*.43;
   for(int i=data.size()-1; i>=0; i--)
   {
-    
     Crew c = data.get(i);
     fill(0);
     textAlign(CENTER);
@@ -161,12 +160,13 @@ void mainMenu()
     buttons();
     drawBar();
     drawWave();
+    drawCulture();
+    drawBackground();
 }
 
 void barChart()
 {
     background(255, 0, 0);
-      
     buttons();
     
     // barchart function 
@@ -183,7 +183,9 @@ void sineWave()
 void petri()
 {
     background(0);
-    culture.render();
+    culture.render(data.get(selectCrew).spCode);
+    //culture.render((data.get(selectCrew).c1), (data.get(selectCrew).c2), (data.get(selectCrew).c3));
+    
 }
 
 // checking for user selecting options
@@ -210,7 +212,7 @@ void mousePressed()
       barFlag = false;
       
       sineFlag = true;
-      // sine wave function
+      // ECG file
     }
   }
   
@@ -223,7 +225,7 @@ void mousePressed()
       sineFlag = false;
       
       bactFlag = true;
-      //bacteria culture function
+      // Blood Culture file
     }
   }
   
@@ -237,6 +239,7 @@ void mousePressed()
       render();
       drawBar();
       drawWave();
+      drawCulture();
       buttons();
       // pi wave function 
     }
@@ -250,6 +253,7 @@ void mousePressed()
       menuFlag = false;
       barFlag = false;
       sineFlag = false;
+      bactFlag = false;
       
       crewFlag = true;
     }
@@ -263,6 +267,7 @@ void mousePressed()
       barFlag = false;
       sineFlag = false; 
       crewFlag = false; 
+      bactFlag = false;
       
       menuFlag = true;
     }
@@ -270,7 +275,7 @@ void mousePressed()
 } // end mouseClicked()
 
 // create background shapes
-void create()
+void createGrid()
 {
   shape1 = createShape();
   shape1.beginShape();
@@ -316,18 +321,35 @@ void render()
 // image as part of main menu
 void drawBar()
 {
-  float cx = 55;
-  float cy = 20;
-  float tx = 140;
-  float ty = 180;
+  float cx = 47;
+  float cy = 40;
+  float tx = 290;
+  float ty = 70;
   
   PImage barChartIMG;
   barChartIMG = loadImage("miniBar_chart.jpg");
   image(barChartIMG, cx, cy);
   
   textAlign(CENTER);
-  textFont(font_sign, 32);
-  text("Blood Pressure", tx, ty);
+  textFont(font_sign, 40);
+  text("Blood\nPressure", tx, ty);
+}
+
+// image as part of main menu
+void drawCulture()
+{
+  float cx = 50;
+  float cy = 440;
+  float tx = 320;
+  float ty = 510;
+  
+  PImage cultureIMG;
+  cultureIMG = loadImage("culture.JPG");
+  image(cultureIMG, cx, cy);
+  
+  textAlign(CENTER);
+  textFont(font_sign, 40);
+  text("Blood\nCultures", tx, ty);
 }
 
 // image as part of main menu
@@ -335,15 +357,27 @@ void drawWave()
 {
   float cx = 930;
   float cy = 27;
-  float tx = 960;
-  float ty = 180;
+  float tx = 875;
+  float ty = 100;
   
   PImage waveIMG;
-  waveIMG = loadImage("miniDNA_wave.jpg");
+  waveIMG = loadImage("menuEcg.jpg");
   image(waveIMG, cx, cy);
   
-  textFont(font_sign, 32); 
-  text("CREW ECG", tx, ty);
+  textFont(font_sign, 40); 
+  text("ECG", tx, ty);
+}
+
+// image as part of main menu
+void drawBackground()
+{
+  float cx = width/3+15;
+  float cy = height/5;
+
+  
+  PImage backIMG;
+  backIMG = loadImage("sfmedical.jpg");
+  image(backIMG, cx, cy);
 }
 
 void loadData()
