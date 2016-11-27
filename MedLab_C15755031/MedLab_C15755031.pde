@@ -205,8 +205,8 @@ void mainMenu()
   }
   else
   {
-    // terminate program with terminate msg ************************************************************************************************
-    myExit(); //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // terminate program with terminate msg 
+    myExit(); 
   }
 }
 
@@ -260,9 +260,7 @@ void sineWave()
 void petri()
 {
     background(0);
-    culture.render(data.get(selectCrew).spCode);
-    //culture.render((data.get(selectCrew).c1), (data.get(selectCrew).c2), (data.get(selectCrew).c3));
-    
+    culture.render(data.get(selectCrew).spCode); 
 }
 
 // checking for user selecting options
@@ -312,7 +310,6 @@ void mousePressed()
   {
      if(mouseY <= height && mouseY >= height-height/3)
     {
-      //drawExit();
       exitFlag = true; 
     }
   }
@@ -345,7 +342,7 @@ void mousePressed()
     }
   }
 
-  // if centre square area i.e. crew table
+  // if centre square areas are clicked i.e. crew manifest table
   if (mouseX >330 && mouseX < 880) 
   {
     if (mouseY > 225 && mouseY < 245)
@@ -380,9 +377,8 @@ void mousePressed()
   } 
 }// end mousePressed()
   
-  
-
-// create background shapes
+ 
+// create background grid shapes
 void createGrid()
 {
   shape1 = createShape();
