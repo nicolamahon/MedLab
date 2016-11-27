@@ -94,12 +94,12 @@ void buttons()
   stroke(255);
   strokeWeight(7);
   fill(123, 123, 123);
-  rect(width*.4, height*.1, 260, 50);
-  rect(width*.4, height*.85, 260, 50);
+  rect(width/3+3, 3, width/3-5, 50);
+  rect(width/3+3, height-53, width/3-5, 50);
   fill(255,223,0);
   textFont(font_sign, 48);
-  text("CREW MANIFEST", width*.51, height*.17);
-  text("MAIN MENU", width*.51, height*.92);
+  text("CREW MANIFEST", width*.51, height*.075);
+  text("MAIN MENU", width*.51, height*.98);
 }
 
 // printing the crew icon and list
@@ -165,7 +165,6 @@ void sineWave()
     buttons();
     // pass the hr value of the selected crew member as param to fxn crewECG.render()
     crewECG.render(data.get(selectCrew).hr);
-    
 }
 // checking for user selecting options
 void mousePressed() 
@@ -221,11 +220,11 @@ void mousePressed()
       // pi wave function 
     }
   }
-  
+ 
   // top center grid i.e. crew manifest button
   if (mouseX > width/3 && mouseX < width-width/3) 
   {
-     if(mouseY < height/3 && mouseY > 0)
+     if(mouseY < 50 && mouseY > 0)
     {
       menuFlag = false;
       barFlag = false;
@@ -234,11 +233,11 @@ void mousePressed()
       crewFlag = true;
     }
   }
-  
+   
   // bottom center grid i.e. main menu button
   if (mouseX > width/3 && mouseX < width-width/3) 
   {
-     if(mouseY <= height && mouseY >= height-height/3)
+     if(mouseY <= height && mouseY >= height-50)
     {
       barFlag = false;
       sineFlag = false; 

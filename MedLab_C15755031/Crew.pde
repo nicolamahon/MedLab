@@ -56,12 +56,14 @@ class Crew
   void printCrew()
   {
     Crew c = data.get(selectCrew);
-    fill(0);
+    fill(255,223,0);
+    pushMatrix();
     textAlign(LEFT);
     float x = width*.50;
     float y = height*.3;
     text("CREW MEMBER", x, y);
     y += 80;
+    fill(206,99,99);
     text("Name: "+c.Fname+" "+c.Lname, x, y);
     y += 40;
     text("Age: "+c.age, x, y);
@@ -78,6 +80,10 @@ class Crew
     PImage profileIMG;
     profileIMG = loadImage(c.photo);
     image(profileIMG, x,y);
+    popMatrix();
+    
+    textAlign(CENTER);
+    buttons();
   }
   
 } // end class
