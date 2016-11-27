@@ -125,4 +125,38 @@ class Crew
     buttons();
   }
   
+  void printCrewBP()
+  {
+    Crew c = data.get(selectCrew);
+    fill(255,223,0);
+    pushMatrix();
+    textAlign(LEFT);
+    float x = width*.50;
+    float y = height*.3;
+    textSize(48);
+    text("CREW MEMBER", x, y);
+    y += 80;
+    fill(206,99,99);
+    text("Name: "+c.Fname+c.Lname, x, y);
+    y += 40;
+    text("Gender: "+c.gender, x, y);
+    y += 40;
+    text("BirthPlace: "+c.birthP, x, y);
+    y += 40;
+    text("Species: "+c.species, x, y);
+    y += 40;
+    text("Species Code: "+c.spCode, x, y);
+    y += 40;
+    text("Immunised: "+c.immune, x, y);
+    x += 265; 
+    y = height*.25;
+    PImage profileIMG;
+    profileIMG = loadImage(c.photo);
+    image(profileIMG, x,y);
+    popMatrix();
+    
+    textAlign(CENTER);
+    buttons();
+  }
+  
 } // end class

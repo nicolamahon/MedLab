@@ -2,30 +2,44 @@ void setup()
 {
   background(0);
   size(1200, 600);
+  
+  // draw main grid and load data from CSV file
   createGrid();  
   loadData();
+  
+  // class objects
   crewECG = new ECG();
   culture = new Bacteria();
   culture.initialise();
+  crewBP = new BP();
   
+  // fonts imported
   font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
 }
 
+// arrayList holding crew objects, read from CSV file
 ArrayList<Crew> data = new ArrayList<Crew>();
 
+// 
 ECG crewECG;
 Bacteria culture;
+BP crewBP;
+
+// variable to store the crew member number chosen by user
 int selectCrew = 0;
 
 //float BP = data.get(selectCrew).bp;
 
+// shapes for the main background grid
 PShape shape1;
 PShape shape2;
 
+// imported fonts
 PFont font_sign;
 PFont font_main;
 
+// flags
 boolean menuFlag = false;        // if the main menu button clicked
 boolean manifestFlag = false;   // if the crew manifest button clicked
 boolean exitFlag = false;      // if the exit button is clicked
@@ -38,7 +52,7 @@ boolean crewFlag = false;
 
 void draw()
 {
-  
+  // delay to allow an initial welcome/splash screen
   if (frameCount < 120)
   {
     //display splash screen
@@ -47,10 +61,12 @@ void draw()
   else
   {
     //rest of the code
+    
     // display the crew table to allow the user to select a crew members' record for viewing
     crewTable();
     
-    // check state of flags to change between screens
+    /* check state of flags to change between screens */
+    
     if (menuFlag)
     {
       mainMenu();
@@ -88,7 +104,7 @@ void draw()
   }
 }
 
-// main welcome screen
+// draws main welcome screen
 void splash()
 {
   float x = width/2;
@@ -242,15 +258,15 @@ void myExit()
 
 void barChart()
 {
-    background(255, 0, 0);
+    background(0);
     buttons();
-    
+    crewBP.border();
     // barchart function 
 }
 
 void sineWave()
 {
-    background(0, 0, 255);
+    //background(0, 0, 255);
     buttons();
     
     // pass the hr value of the selected crew member as param to fxn crewECG.render()
@@ -378,6 +394,7 @@ void mousePressed()
 }// end mousePressed()
   
  
+ 
 // create background grid shapes
 void createGrid()
 {
@@ -488,7 +505,7 @@ void loadData()
 {
   data.clear();
   
-  Table t = loadTable("medRecords2.csv", "header");
+  Table t = loadTable("medRecords.csv", "header");
   
   for(int i=0; i<t.getRowCount(); i++)
   {
