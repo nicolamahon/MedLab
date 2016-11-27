@@ -1,6 +1,6 @@
 void setup()
 {
- size(800,800);
+ size(1200,600);
  loadData();
  printData();
  
@@ -24,9 +24,13 @@ void loadData()
 
 void printData()
 {
+  
+  
+  
+  
   background(0);
   stroke(255);
-  rect(width/4, height/5, 300, 300);
+  rect(width/4, height/5, 600, 300);
   float x = width/3;
   float y = height/4;
   for(int i=0; i<data.size(); i++)
@@ -43,4 +47,5 @@ void printData()
     x = width/3;
     
   }
+  
 }

@@ -15,6 +15,7 @@ class Crew
   int spCode;
   float hr;
   String photo;
+  int bp;
   
    Crew(TableRow row)
   {
@@ -33,6 +34,7 @@ class Crew
     spCode = row.getInt("SpeciesCode");
     hr = row.getFloat("HeartRate"); 
     photo = row.getString("Photo");
+    bp = row.getInt("BloodPressure");
   }
 
    // converts the object to a string so it can be printed

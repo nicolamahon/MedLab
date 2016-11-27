@@ -1,4 +1,4 @@
-class DNA
+class Wave
 {
   int xspacing;   // How far apart should each horizontal location be spaced
   int w;              // Width of entire wave
@@ -8,17 +8,18 @@ class DNA
   float period;  // How many pixels before the wave repeats
   float dx;  // Value for incrementing X, a function of period and xspacing
   float[] yvalues;  // Using an array to store height values for the wave
-  color c;
+  int c;
   
-  DNA(color c)
+  Wave(int c)
   {
     xspacing = 16;
     w = width+16;
     theta = 0.0;
-    amplitude = 75.0;
+    amplitude = 85.0;
     period = 500;
     dx = (TWO_PI / period) * xspacing;
     yvalues = new float[w/xspacing];
+    this.c = c;
   }
 
   void render() 
@@ -48,11 +49,12 @@ class DNA
   void calcWave() 
   {
     // Increment theta (try different values for 'angular velocity' here
-    theta += 0.02;
+    theta += 0.3;
   
     // For every x value, calculate a y value with sine function
     float x = theta;
-    for (int i = 0; i < yvalues.length; i++) {
+    for (int i = 0; i < yvalues.length; i++) 
+    {
       yvalues[i] = sin(x)*amplitude;
       x+=dx;
     }

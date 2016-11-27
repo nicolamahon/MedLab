@@ -5,14 +5,20 @@ void setup()
   create();  
   loadData();
   crewECG = new ECG();
+  culture = new Bacteria();
+  culture.initialise();
+  
   font_sign = createFont("Okuda", 50);
   font_main = createFont("Finalnew.ttf", 50);
 }
 
 ArrayList<Crew> data = new ArrayList<Crew>();
-ECG crewECG;
 
+ECG crewECG;
+Bacteria culture;
 int selectCrew = 2;
+
+//float BP = data.get(selectCrew).bp;
 
 PShape shape1;
 PShape shape2;
@@ -24,6 +30,7 @@ boolean menuFlag = false;
 boolean crewFlag = false;
 boolean barFlag = false;
 boolean sineFlag = false;
+boolean bactFlag = false;
 
 void draw()
 {
@@ -57,6 +64,11 @@ void draw()
     if(barFlag)
     {
       barChart();
+    }
+    
+    if(bactFlag)
+    {
+      petri();
     }
   }
 }
@@ -154,6 +166,7 @@ void mainMenu()
 void barChart()
 {
     background(255, 0, 0);
+      
     buttons();
     
     // barchart function 
@@ -166,6 +179,14 @@ void sineWave()
     // pass the hr value of the selected crew member as param to fxn crewECG.render()
     crewECG.render(data.get(selectCrew).hr);
 }
+
+void petri()
+{
+    background(0, 0, 255);
+    buttons();
+    //culture.render();
+}
+
 // checking for user selecting options
 void mousePressed() 
 {
@@ -174,6 +195,7 @@ void mousePressed()
   {
     if(mouseY >=0 && mouseY <= height/3)
     {
+      bactFlag = false;
       sineFlag = false; 
       barFlag = true;
       // barchart function
@@ -185,6 +207,7 @@ void mousePressed()
   {
     if(mouseY >=0 && mouseY <= height/3)
     {
+      bactFlag = false;
       barFlag = false;
       sineFlag = true;
       // sine wave function
@@ -196,13 +219,13 @@ void mousePressed()
   {
      if(mouseY <= height && mouseY >= height-height/3)
     {
-      background(0, 255, 0);
+      crewFlag = false;
+      barFlag = false;
+      sineFlag = false;
       
-      render();
-      drawBar();
-      drawWave();
-      buttons();
-      //BP function
+      bactFlag = true;
+      
+      //bacteria culture function
     }
   }
   
