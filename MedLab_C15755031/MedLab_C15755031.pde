@@ -182,9 +182,8 @@ void sineWave()
 
 void petri()
 {
-    background(0, 0, 255);
-    buttons();
-    //culture.render();
+    background(0);
+    culture.render();
 }
 
 // checking for user selecting options
@@ -209,6 +208,7 @@ void mousePressed()
     {
       bactFlag = false;
       barFlag = false;
+      
       sineFlag = true;
       // sine wave function
     }
@@ -219,12 +219,10 @@ void mousePressed()
   {
      if(mouseY <= height && mouseY >= height-height/3)
     {
-      crewFlag = false;
       barFlag = false;
       sineFlag = false;
       
       bactFlag = true;
-      
       //bacteria culture function
     }
   }
