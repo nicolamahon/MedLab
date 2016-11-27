@@ -28,12 +28,13 @@ PFont font_main;
 
 boolean menuFlag = false;        // if the main menu button clicked
 boolean manifestFlag = false;   // if the crew manifest button clicked
+boolean exitFlag = false;      // if the exit button is clicked
 
 boolean barFlag = false;
 boolean sineFlag = false;
 boolean bactFlag = false;
 boolean crewFlag = false;
-boolean exitFlag = false;
+
 
 void draw()
 {
@@ -46,9 +47,10 @@ void draw()
   else
   {
     //rest of the code
-    //background(0);
+    // display the crew table to allow the user to select a crew members' record for viewing
     crewTable();
     
+    // check state of flags to change between screens
     if (menuFlag)
     {
       mainMenu();
@@ -221,14 +223,20 @@ void drawExit()
 
 void myExit()
 {
+    
     background(0);
     PImage exitIMG;
     exitIMG = loadImage("exitSplash.png");
     image(exitIMG, 0, 0);
+    text("SYSTEM SHUTTING DOWN", width/4, 100);
+    
     drawExit();
-    //for(int i=0;i<1000000000; i++);   // trying to delay the program exiting wihout user seeing the msg
-    delay(10000);
-    exit();
+    
+    // delay the program exiting wihout user seeing the msg
+    if(frameCount == 120)
+    {
+      exit(); // built in processing fxn to exit the program
+    }
 }
 
 void barChart()
@@ -298,13 +306,12 @@ void mousePressed()
     }
   }
   
-  // bottom right grid - TO BE CREATED
+  // bottom right grid
   if (mouseX <= width && mouseX >= width-width/3) 
   {
      if(mouseY <= height && mouseY >= height-height/3)
     {
-      background(0, 255, 255);
-      drawExit();
+      //drawExit();
       exitFlag = true; 
     }
   }
@@ -373,43 +380,6 @@ void mousePressed()
 }// end mousePressed()
   
   
-  /*
-  {
-    float y = 245;
-    if(mouseY < y+40)
-    {
-      selectCrew = 0;
-    }
-    
-    if(mouseY > y+40 && mouseY < y+80)
-    {
-      selectCrew = 1;
-    }
-    
-    if(mouseY > y+80 && mouseY < y+120)
-    {
-      selectCrew = 2;
-    }
-    
-    if(mouseY > y+120 && mouseY < y+160)
-    {
-      selectCrew = 3;
-    }
-    
-    if(mouseY > y+160 && mouseY < y+200)
-    {
-      selectCrew = 4;
-    }
-    
-    if(mouseY > y+200 && mouseY < y+240)
-    {
-      selectCrew = 5;
-    }
-    
-    crewFlag = true;
-  }
-  */
-
 
 // create background shapes
 void createGrid()
