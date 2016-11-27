@@ -125,6 +125,20 @@ void crewList()
   image(loadIMG, 0,0);
   popMatrix();
   
+  PImage badge1;
+  badge1 = loadImage("sciences.png");
+  image(badge1, 70, 40);
+  PImage badge2;
+  badge2 = loadImage("engineering.png");
+  image(badge2, 70, 315);
+  PImage badge3;
+  badge3 = loadImage("tactical.png");
+  image(badge3, 965, 40);
+  PImage badge4;
+  badge4 = loadImage("command.png");
+  image(badge4, 965, 315);
+  
+    
   // printing arrayList of crew here
   crewMember();
 }
@@ -133,21 +147,29 @@ void crewList()
 void crewMember()
 {
   rect(width/4, height*.32, 600, 300);
-  float x = width/3;
-  float y = height*.43;
+  float x;
+  float y = height*.41;
+  fill(0);
+  //textAlign(0);
+  //text("ID\t"+"Name\t"+"Rank", x, y-40);
   for(int i=data.size()-1; i>=0; i--)
   {
+    x = width*0.28;
     Crew c = data.get(i);
-    fill(0);
-    textAlign(CENTER);
+    pushMatrix();
+    textAlign(LEFT);
+    textFont(font_sign, 26);
     text(c.id, x, y);
-    x += 200;
-    text(c.Fname, x, y);
-    x += 200;
-    text(c.Lname, x, y);
+    x += 100;
+    text(c.Fname+" "+c.Lname, x, y);
+    x += 130;
+    text(c.rank, x, y);
+    x += 150;
+    text(c.pos, x, y);
+    popMatrix();
     y += 40;
-    x = width/3;
   }
+  textAlign(CENTER);  // ** affects formatting of buttons that come after 
 }
 
 
