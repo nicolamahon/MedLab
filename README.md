@@ -4,10 +4,10 @@ HUD OOP CA Semester1 Year2
 The concept for my OOP assignment is based on a Star Trek-esque Sick Bay HUD/UI.  
 The video below give a basic demonstration of the functionality of the program and the expected user interactions. 
 
-CLICK THE IMAGE BELOW TO PLAY VIDEO
-(Alt Link: https://youtu.be/NytrvnN8dhk)
+Click image below to play video:
 
 [![Video](http://img.youtube.com/vi/NytrvnN8dhk/0.jpg)](http://www.youtube.com/watch?v=NytrvnN8dhk)
+(Alt Link: https://youtu.be/NytrvnN8dhk)
 
 The basic functionality of the program involves the user selecting a crew member from a list. This selection triggers a 
 mouseClicked() function inside my sketch which is checking to see if various areas of this screen are clicked by the user. 
@@ -23,6 +23,8 @@ Data for each crew member is unique and is held in a CSV file which the program 
 A 'Crew' class is used to parse the data into rows and and load the values into global variables which are saved in the arrayList.
 This Crew class also has methods used to display the medical records to the user. 
 
+Now you know the basic concept, let's see how it looks....
+
 The user is initially shown a splash screen to welcome them to the "United Federation of Planets, MedLab System".
 This screen displays for a few seconds using a frameCount check, then disappears. 
 
@@ -34,7 +36,7 @@ Here the user can select a crew member that they want to review.
 ![Crew Manifest](/screenshots/crewManifestScreen.jpg?raw=true "Crew Manifest")
 
 Once a crew member is selected from the list, their name is displayed in the field at the top of the table i.e. 
-Crew Member Selected: Beverly Crusher. The user can then proceed to the Main Menu to view Beverly Crusher's medical records.
+"Crew Member Selected: Beverly Crusher". The user can then proceed to the Main Menu to view Beverly Crusher's medical records.
 
 Error Checking:
 If the user does not select a crew member from the Crew Manifest table, but selects to enter the Main Menu immediately, 
