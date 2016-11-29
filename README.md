@@ -1,6 +1,7 @@
 # MedLab
 HUD OOP CA Semester1 Year2
 
+<b>CONCEPT</b><br>
 The concept for my OOP assignment is based on a Star Trek-esque Sick Bay HUD/UI.  
 The video below give a basic demonstration of the functionality of the program and the expected user interactions. 
 
@@ -8,6 +9,7 @@ Click image below to play video: (https://youtu.be/NytrvnN8dhk)
 
 [![Video](http://img.youtube.com/vi/NytrvnN8dhk/0.jpg)](http://www.youtube.com/watch?v=NytrvnN8dhk)
 
+<b>BASIC FUNCTIONALITY</b><br>
 The basic functionality of the program involves the user selecting a crew member from a list. This selection triggers a 
 mouseClicked() function inside my sketch which is checking to see if various areas of this screen are clicked by the user. 
 Once a specific button or item is clicked, state flags are set to true or false, and global variables 
