@@ -32,8 +32,29 @@ Here the user can select a crew member that they want to review.
 ![Crew Manifest](/screenshots/crewManifestScreen.jpg?raw=true "Crew Manifest")
 
 Once a crew member is selected from the list, their name is displayed in the field at the top of the table i.e. 
-Crew Member Selected: Beverly Crusher. The user can then proceed to the Main Menu to view Beverly Crushers medical records.
+Crew Member Selected: Beverly Crusher. The user can then proceed to the Main Menu to view Beverly Crusher's medical records.
 
 Error Checking:
-If the user does not select a crew member from the Crew Manifest table, and selects to enter the Main Menu, the program will termninate softly 
-with an exit splash screen. This to prevent the user accessing any data that is not associated with any crew member. 
+If the user does not select a crew member from the Crew Manifest table, but selects to enter the Main Menu immediately, 
+the program will termninate softly with an exit splash screen. This to prevent the program displaying any data that is not 
+associated with a crew member. 
+
+Once inside the Main Menu, the user is shown a number of buttons: "Blood Cultures", "Chemistry Panel", "ECG" and "Exit MedLab System".
+These buttons allow the user to further interact, clicking the buttons will bring the user to a new display where they can 
+review the chosen crew member's medical record for that particular fields i.e. Beverly Crusher's Echocardiogram, etc
+
+![Main Menu](/screenshots/mainMenu.jpg?raw=true "Main Menu")
+
+Below are screen shots from the medical fields available to the user. 
+
+![Echocardiogram](/screenshots/echocardiogram.jpg?raw=true "Echocardiogram")
+
+![Chemistry Panel](/screenshots/chemPanel.jpg?raw=true "Chemistry Panel")
+
+![Blood Culture](/screenshots/bloodCulture.jpg?raw=true "Blood Culture")
+
+At any point in the program the user can return to the Crew Manifest by selecting that button, which appears on each 
+display page. The user can switch between crew members and view their records by accessing the options in the Main Menu. 
+
+Once the user is finished their analysis, the user can click the final button on the Main Menu, named "Exit MedLab System".
+Clicking this button will terminate the program with an exit splash screen. 
