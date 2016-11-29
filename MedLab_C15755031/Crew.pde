@@ -67,6 +67,7 @@ class Crew
     ;
   }
   
+  // print crew member details with items specific to the ECG chart
   void printCrewHR()
   {
     Crew c = data.get(selectCrew);
@@ -100,6 +101,7 @@ class Crew
     buttons();
   }
   
+  // print crew member details with items specific to the Blood Culture (Bacteria) chart
   void printCrewCult()
   {
     Crew c = data.get(selectCrew);
@@ -134,6 +136,7 @@ class Crew
     buttons();
   }
   
+  // print crew member details with items specific to the Chem Panel chart
   void printCrewCP()
   {
     Crew c = data.get(selectCrew);
@@ -169,6 +172,27 @@ class Crew
     
     textAlign(CENTER);
     buttons();
+  }
+  
+  // this draws the generic formatted border for all the charts
+  void drawCrewBorder() 
+  {
+    stroke(123);
+    strokeWeight(100);
+    line(0, 0, 0, height);
+    line(0, 0, width, 0);
+    line(width, 0, width, height);
+    line(0, height, width, height);
+    stroke(0, 123, 0);
+    strokeWeight(20);
+    line(50, 50, width-50, 50);
+    line(50, 50, 50, height-50);
+    line(50, height-50, width-50, height-50);
+    line(width-50, height-50, width-50, 50);
+    
+    // text area for printing crew details
+    fill(255);
+    rect(width*.45, height*.17, 570, 400);
   }
   
 } // end class

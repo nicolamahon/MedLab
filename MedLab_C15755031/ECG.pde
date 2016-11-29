@@ -19,21 +19,24 @@ class ECG
     subCycle = (TWO_PI*5)/float(distanceX);
   }
  
-  
+  // takes a speed for the crew member's heart rate
   void render(float WaveSpeed)
   {
     background(0);
     fill(255);
     posY = height/2;
-
+    
+    // print the baseline for the ECG
     for (int i = startX; i<endX; i+=step) 
     {
       noStroke();
       rect(i, (posY), 2, 2);
     }
+    // this fxn draws the echo lines
     drawLines(WaveSpeed);
   }
    
+   // draw the 3 moving echo waves
    void drawLines(float WaveSpeed)
    {
       fill(255, 0, 0);
@@ -51,9 +54,12 @@ class ECG
       drawLine(WaveSpeed);
       popMatrix();
       
-      border();
+      data.get(selectCrew).drawCrewBorder();
+      drawEchoDetails();
+      // border();
    }
    
+   // draw an individual wave line, this fxn is used to render and translate the 3 echo waves 
   void drawLine(float WaveSpeed)
   {
     for (int i = startX; i<endX; i+=step) 
@@ -66,31 +72,14 @@ class ECG
       ellipse(i, (posY+variationY+variationY2), 5, 5);
     }
   }
-     
-  void border()
-  {
-    stroke(123);
-    strokeWeight(100);
-    line(0, 0, 0, height);
-    line(0, 0, width, 0);
-    line(width, 0, width, height);
-    line(0, height, width, height);
-    stroke(0, 123, 0);
-    strokeWeight(20);
-    line(50, 50, width-50, 50);
-    line(50, 50, 50, height-50);
-    line(50, height-50, width-50, height-50);
-    line(width-50, height-50, width-50, 50);
-    
-    
-    fill(255);
-    rect(width*.45, height*.17, 570, 400);
-    //fill(0);
-    
-    fill(255);
-    text("ECHOCARDIOGRAM", 260, 500);
+   
+   // draw the details that are specific to the Echo chart
+    void drawEchoDetails()
+    {
+      fill(255);
+      text("ECHOCARDIOGRAM", 260, 500);
     
     data.get(selectCrew).printCrewHR();
     buttons();
-  }
+    }
 }

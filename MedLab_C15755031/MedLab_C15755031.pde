@@ -11,7 +11,6 @@ void setup()
   crewECG = new ECG();
   culture = new Bacteria();
   culture.initialise();
-  chemPanel = new Chemistry();
   
   // fonts imported
   font_sign = createFont("Okuda", 50);
@@ -24,10 +23,10 @@ ArrayList<Crew> data = new ArrayList<Crew>();
 // class objects
 ECG crewECG;
 Bacteria culture;
-Chemistry chemPanel;
 
 // variable to store the crew member number chosen by user
-int selectCrew = 0;
+// used to iterate through the arrayList looking for specific crew details
+int selectCrew = 0;  
 
 // shapes for the main background grid
 PShape shape1;
@@ -56,10 +55,8 @@ void draw()
     //display splash screen
     splash();
   }
-  else
+  else //rest of the code
   {
-    //rest of the code
-    
     // display the crew table to allow the user to select a crew members' record for viewing
     crewTable();
     
@@ -82,7 +79,7 @@ void draw()
     
     if(chemFlag)
     {
-      barChart();
+      chemChart();
     }
     
     if(bactFlag)
@@ -99,8 +96,9 @@ void draw()
     {
       myExit();
     }
-  }
-}
+  } // end else
+} // end draw()
+
 
 // draws main welcome screen
 void splash()
@@ -126,10 +124,12 @@ void crewTable()
   background(0);
   crewList();         // must print before buttons()
   buttons();       // must print after crewList()
+  
+  // display to the user which crew member they have selected to view
   text("Crew Member Selected: "+ data.get(selectCrew).Fname+" "+data.get(selectCrew).Lname, 600, 110);
 }
 
-// printing the menu/manifest buttons 
+// printing the main menu + manifest buttons 
 void buttons()
 { 
   stroke(255);
@@ -143,7 +143,7 @@ void buttons()
   text("MAIN MENU", width*.51, height*.98);
 }
 
-// printing the crew icon and list
+// printing the crew icon and calling print of crew list
 void crewList()
 {
   background(0);
@@ -167,11 +167,11 @@ void crewList()
   badge4 = loadImage("command.png");
   image(badge4, 965, 315);
   
-  // printing arrayList of crew here
+  // printing crew manifest from arrayList
   crewMember();
 }
 
-// printing each crew member details
+// printing each crew member details for the crew manifest table
 void crewMember()
 {
   PImage bullet;
@@ -181,6 +181,8 @@ void crewMember()
   float y = height*.41;
   fill(0);
   
+  // loop to print each crew on a new line
+  // using seperate text boxes for each field to allow the data to be aligned in a readable manner
   for(int i=data.size()-1; i>0; i--)
   {
     x = width*0.28;
@@ -206,6 +208,7 @@ void crewMember()
 // draws the main interactive screen
 void mainMenu()
 {
+  // user must select a crew member before proceeding to the main menu
   if(selectCrew > 0)
   {
     background(0);
@@ -219,7 +222,7 @@ void mainMenu()
   }
   else
   {
-    // terminate program with terminate msg 
+    // terminate program with terminate msg if no crew member is selected
     myExit(); 
   }
 }
@@ -234,6 +237,7 @@ void drawExit()
   text("MEDLAB  SYSTEM", width-200, height-50);
 }
 
+// display exit screen and auto-terminate program safely, user does not need to close
 void myExit()
 {
     
@@ -245,30 +249,28 @@ void myExit()
     text("PLEASE WAIT......", 600, 90);
     text(".....SYSTEM SHUTTING DOWN", 575, 500);
 
-    // delay the program exiting wihout user seeing the msg
+    // delay the program exiting so that the user can see the exit msg
     if(frameCount % 60 == 0)
     {
       exit(); // built in processing fxn to exit the program
     }
 }
 
-// chem panel (barchart) function 
-void barChart()
+// chem panel (chemChart) function 
+void chemChart()
 {
     background(0);
     buttons();
     chemPanel();
-    
-    //chemPanel.render();
-    
 }
 
+// read and display details about a crew member's chemsitry panel
 void chemPanel()
 {
-  // read a crew members data
+    // read the selected crew members data
     Crew c = data.get(selectCrew);
     
-    // map the chem values onto the grid
+    // map the chem values onto the grid 
     float lipHeight = map(c.lipid, 0, 10, 0, 300);
     float tsHeight = map(c.t3_t4, 0, 30, 0, 300);
     float renHeight = map(c.renal, 0, 15, 0, 300);
@@ -277,7 +279,6 @@ void chemPanel()
     
     // draw the bars for the chart
     noStroke();
-    
     pushMatrix();
     translate(0, -70);
     textSize(20);
@@ -293,6 +294,7 @@ void chemPanel()
     rect(130, height-height/5-240, livHeight, -20);
     popMatrix();
     
+    // draw the labels and values for the chart
     pushMatrix();
     translate(35, -65);
     textAlign(LEFT);
@@ -303,28 +305,45 @@ void chemPanel()
     text("Liver Proteins: "+c.liver, 100, (height-height/5)-225);
     popMatrix();
     
-    chemPanel.border();
+    // draw the chemistry chart border
+    c.drawCrewBorder();
+    
+    // label the chart and print the crew details and profile photo
+    drawChemDetails();
 }
 
+// label the chart and call fxn to print the crew chemistry details and profile photo
+void drawChemDetails()
+{
+    textSize(48);
+    text("CHEMISTRY PANEL", 130, 500);
+    
+    // print crew details
+    data.get(selectCrew).printCrewCP();
+    buttons();
+}
+
+// display the echocardiogram chart if the user selects to view it
 void echo()
 {
-    
+    // display the menu/manifest buttons to allow the user to exit the echo chart
     buttons();
-    
     // pass the hr value of the selected crew member as param to fxn crewECG.render()
     crewECG.render(data.get(selectCrew).hr);
 }
 
+// display the blood culture chart if the user selects to view it
 void petri()
 {
     background(0);
+    // pass the speciesCode value of the selected crew member as param to fxn culture.render()
     culture.render(data.get(selectCrew).spCode); 
 }
 
-// checking for user selecting options
+// checking for user mouse clicks to access various parts of the HUD 
 void mousePressed() 
 {
-  // top left grid
+  // chem panel
   if (mouseX >=0 && mouseX <= width/3) 
   {
     if(mouseY >=0 && mouseY <= height/3)
@@ -333,11 +352,11 @@ void mousePressed()
       ecgFlag = false; 
       
       chemFlag = true;
-      // barchart function
+      // chemChart function
     }
   }
   
-  // top right grid
+  // echocardiogram ECG
   if (mouseX <= width && mouseX >= width-width/3) 
   {
     if(mouseY >=0 && mouseY <= height/3)
@@ -350,7 +369,7 @@ void mousePressed()
     }
   }
   
-  // bottom left grid
+  // blood cultures 
   if (mouseX >=0 && mouseX <= width/3) 
   {
      if(mouseY <= height && mouseY >= height-height/3)
@@ -363,7 +382,7 @@ void mousePressed()
     }
   }
   
-  // bottom right grid
+  // to exit the program
   if (mouseX <= width && mouseX >= width-width/3) 
   {
      if(mouseY <= height && mouseY >= height-height/3)
@@ -372,7 +391,7 @@ void mousePressed()
     }
   }
  
-  // top center grid i.e. crew manifest button
+  // checking crew manifest button
   if (mouseX > width/3 && mouseX < width-width/3) 
   {
      if(mouseY < 50 && mouseY > 0)
@@ -386,7 +405,7 @@ void mousePressed()
     }
   }
    
-  // bottom center grid i.e. main menu button
+  // checking main menu button
   if (mouseX > width/3 && mouseX < width-width/3) 
   {
      if(mouseY <= height && mouseY >= height-50)
@@ -400,9 +419,10 @@ void mousePressed()
     }
   }
 
-  // if centre square areas are clicked i.e. crew manifest table
+  // checking mouse input on the crew manifest table
   if (mouseX >330 && mouseX < 880) 
   {
+    // various rows of the crew manifest table
     if (mouseY > 225 && mouseY < 245)
     {
       selectCrew = 6;
@@ -435,7 +455,6 @@ void mousePressed()
   } 
 }// end mousePressed()
   
- 
  
 // create background grid shapes
 void createGrid()
@@ -489,9 +508,9 @@ void drawBar()
   float tx = 290;
   float ty = 70;
   
-  PImage barChartIMG;
-  barChartIMG = loadImage("miniBar_chart.jpg");
-  image(barChartIMG, cx, cy);
+  PImage chemChartIMG;
+  chemChartIMG = loadImage("miniBar_chart.jpg");
+  image(chemChartIMG, cx, cy);
   
   textAlign(CENTER);
   textFont(font_sign, 40);
@@ -537,23 +556,22 @@ void drawBackground()
   float cx = width/3+15;
   float cy = height/5;
 
-  
   PImage backIMG;
   backIMG = loadImage("sfmedical.jpg");
   image(backIMG, cx, cy);
 }
 
+// load the data elements from a CSV file into the global arrayList
 void loadData()
 {
-  data.clear();
-  
+  data.clear(); // ensure data is clean before file load
   Table t = loadTable("medRecords.csv", "header");
   
+  // load elements from the CSV file, row by row
   for(int i=0; i<t.getRowCount(); i++)
   {
     TableRow row = t.getRow(i);
     Crew c = new Crew(row);
-    data.add(c);
-    //println(c);
+    data.add(c);  // add the now-populated rows to the data arrayList 
   }
 }
