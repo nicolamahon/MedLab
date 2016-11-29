@@ -1,5 +1,6 @@
 # MedLab
-HUD OOP CA Semester1 Year2
+DT228/1 Object Oriented Programming <br>
+Heads Up Display for a Sci-Fi Movie
 
 <b>CONCEPT</b><br>
 The concept for my OOP assignment is based on a Star Trek-esque Sick Bay HUD/UI.  
@@ -99,5 +100,5 @@ need to close the program window manually, it will self-terminate.
 - terminating the program at the user's request rather than self-terminating
 - being able to flip back and forth between screens to allow the user full control over what they see
 
-That's it, I hope you enjoy playing around with it.
+That's it, I hope you enjoy playing around with it.<br>
 <b>~ Engage!</b>
