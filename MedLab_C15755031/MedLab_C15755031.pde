@@ -11,7 +11,7 @@ void setup()
   crewECG = new ECG();
   culture = new Bacteria();
   culture.initialise();
-  crewBP = new BP();
+  chemPanel = new Chemistry();
   
   // fonts imported
   font_sign = createFont("Okuda", 50);
@@ -21,15 +21,13 @@ void setup()
 // arrayList holding crew objects, read from CSV file
 ArrayList<Crew> data = new ArrayList<Crew>();
 
-// 
+// class objects
 ECG crewECG;
 Bacteria culture;
-BP crewBP;
+Chemistry chemPanel;
 
 // variable to store the crew member number chosen by user
 int selectCrew = 0;
-
-//float BP = data.get(selectCrew).bp;
 
 // shapes for the main background grid
 PShape shape1;
@@ -44,8 +42,8 @@ boolean menuFlag = false;        // if the main menu button clicked
 boolean manifestFlag = false;   // if the crew manifest button clicked
 boolean exitFlag = false;      // if the exit button is clicked
 
-boolean barFlag = false;
-boolean sineFlag = false;
+boolean chemFlag = false;
+boolean ecgFlag = false;
 boolean bactFlag = false;
 boolean crewFlag = false;
 
@@ -77,12 +75,12 @@ void draw()
       crewTable();
     }
     
-    if(sineFlag)
+    if(ecgFlag)
     {
-      sineWave();
+      echo();
     }
     
-    if(barFlag)
+    if(chemFlag)
     {
       barChart();
     }
@@ -246,9 +244,7 @@ void myExit()
     textSize(75);
     text("PLEASE WAIT......", 600, 90);
     text(".....SYSTEM SHUTTING DOWN", 575, 500);
-    
-    //drawExit();
-    
+
     // delay the program exiting wihout user seeing the msg
     if(frameCount % 60 == 0)
     {
@@ -256,17 +252,63 @@ void myExit()
     }
 }
 
+// chem panel (barchart) function 
 void barChart()
 {
     background(0);
     buttons();
-    crewBP.border();
-    // barchart function 
+    chemPanel();
+    
+    //chemPanel.render();
+    
 }
 
-void sineWave()
+void chemPanel()
 {
-    //background(0, 0, 255);
+  // read a crew members data
+    Crew c = data.get(selectCrew);
+    
+    // map the chem values onto the grid
+    float lipHeight = map(c.lipid, 0, 10, 0, 300);
+    float tsHeight = map(c.t3_t4, 0, 30, 0, 300);
+    float renHeight = map(c.renal, 0, 15, 0, 300);
+    float elecHeight = map(c.elect, 0, 10, 0, 300);
+    float livHeight = map(c.liver, 0, 25, 0, 300);
+    
+    // draw the bars for the chart
+    noStroke();
+    
+    pushMatrix();
+    translate(0, -70);
+    textSize(20);
+    fill(255, 0, 0);
+    rect(130, height-height/5, lipHeight, -20);
+    fill(0, 0, 255);
+    rect(130, height-height/5-60, tsHeight, -20);
+    fill(0, 255, 0);
+    rect(130, height-height/5-120, renHeight, -20);
+    fill(255, 0, 255);
+    rect(130, height-height/5-180, elecHeight, -20);
+    fill(0, 255, 255);
+    rect(130, height-height/5-240, livHeight, -20);
+    popMatrix();
+    
+    pushMatrix();
+    translate(35, -65);
+    textAlign(LEFT);
+    text("Lipids: "+c.lipid, 100, (height-height/5)+15);
+    text("T3/T4 Conversion: "+c.t3_t4, 100, (height-height/5)-45);
+    text("Renal Function: "+c.renal, 100, (height-height/5)-105);
+    text("Electrolytes: "+c.elect, 100, (height-height/5)-165);
+    text("Liver Proteins: "+c.liver, 100, (height-height/5)-225);
+    popMatrix();
+    
+    chemPanel.border();
+}
+
+void echo()
+{
+    
     buttons();
     
     // pass the hr value of the selected crew member as param to fxn crewECG.render()
@@ -288,9 +330,9 @@ void mousePressed()
     if(mouseY >=0 && mouseY <= height/3)
     {
       bactFlag = false;
-      sineFlag = false; 
+      ecgFlag = false; 
       
-      barFlag = true;
+      chemFlag = true;
       // barchart function
     }
   }
@@ -301,9 +343,9 @@ void mousePressed()
     if(mouseY >=0 && mouseY <= height/3)
     {
       bactFlag = false;
-      barFlag = false;
+      chemFlag = false;
       
-      sineFlag = true;
+      ecgFlag = true;
       // ECG file
     }
   }
@@ -313,8 +355,8 @@ void mousePressed()
   {
      if(mouseY <= height && mouseY >= height-height/3)
     {
-      barFlag = false;
-      sineFlag = false;
+      chemFlag = false;
+      ecgFlag = false;
       
       bactFlag = true;
       // Blood Culture file
@@ -335,8 +377,8 @@ void mousePressed()
   {
      if(mouseY < 50 && mouseY > 0)
     {
-      barFlag = false;
-      sineFlag = false;
+      chemFlag = false;
+      ecgFlag = false;
       bactFlag = false;
       menuFlag = false;
       
@@ -349,8 +391,8 @@ void mousePressed()
   {
      if(mouseY <= height && mouseY >= height-50)
     {
-      barFlag = false;
-      sineFlag = false; 
+      chemFlag = false;
+      ecgFlag = false; 
       bactFlag = false;
       manifestFlag = false; 
       
@@ -453,7 +495,7 @@ void drawBar()
   
   textAlign(CENTER);
   textFont(font_sign, 40);
-  text("Blood\nPressure", tx, ty);
+  text("Chemistry\nPanel", tx, ty);
 }
 
 // image as part of main menu

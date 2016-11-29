@@ -1,7 +1,7 @@
 void setup()
 {
   size(500, 500);
-  background(255);
+  background(0);
 }
  
 void draw()
@@ -23,7 +23,7 @@ void draw()
   rect(200, 50, 25, 100);
   
   strokeWeight(5);
-  stroke(0, 125, 0);
+  stroke(153, 217, 234);
   line(50, 150, 250, 150);
   line(50, 150, 50, 20);
   line(50, 20, 250, 20);

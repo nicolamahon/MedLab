@@ -26,7 +26,6 @@ class Bacteria
     probabilityOfAliveAtStart = 30;
     interval = 100;
     lastRecordedTime = 0;
-    //alive = color(a, b, c);
     dead = color(0); 
     size = 60;
     cells = new int[size][size];
@@ -68,25 +67,26 @@ class Bacteria
     {
       alive = color(0, 123, 0);
     }
+    
      //Draw grid
     for (int x=0; x<size; x++) 
     {
-    for (int y=0; y<size; y++) 
-    {
-      if (cells[x][y]==1) 
+      for (int y=0; y<size; y++) 
       {
-      fill(alive); // If alive
-      }
-      else 
-      {
-      fill(dead); // If dead
-      }
-      pushMatrix();
-      translate(115, 130);
-      noStroke();
-      rect (x*cellSize, y*cellSize, cellSize, cellSize);
-      popMatrix();
-    }   
+        if (cells[x][y]==1) 
+        {
+        fill(alive); // If alive
+        }
+        else 
+        {
+        fill(dead); // If dead
+        }
+        pushMatrix();
+        translate(115, 130);
+        noStroke();
+        rect (x*cellSize, y*cellSize, cellSize, cellSize);
+        popMatrix();
+      }   
     }
     border();
     // Iterate if timer ticks
