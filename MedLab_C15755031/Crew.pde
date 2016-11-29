@@ -79,7 +79,7 @@ class Crew
     text("CREW MEMBER", x, y);
     y += 80;
     fill(206,99,99);
-    text("Name: "+c.Fname+c.Lname, x, y);
+    text("Name: "+c.Fname+" "+c.Lname, x, y);
     y += 40;
     text("Age: "+c.age, x, y);
     y += 40;
@@ -94,7 +94,7 @@ class Crew
     y = height*.25;
     PImage profileIMG;
     profileIMG = loadImage(c.photo);
-    image(profileIMG, x,y);
+    image(profileIMG, x+25,y+10);
     popMatrix();
     
     textAlign(CENTER);
@@ -114,7 +114,7 @@ class Crew
     text("CREW MEMBER", x, y);
     y += 80;
     fill(206,99,99);
-    text("Name: "+c.Fname+c.Lname, x, y);
+    text("Name: "+c.Fname+" "+c.Lname, x, y);
     y += 40;
     text("Gender: "+c.gender, x, y);
     y += 40;
@@ -129,7 +129,7 @@ class Crew
     y = height*.25;
     PImage profileIMG;
     profileIMG = loadImage(c.photo);
-    image(profileIMG, x,y);
+    image(profileIMG, x+25,y+10);
     popMatrix();
     
     textAlign(CENTER);
@@ -150,7 +150,7 @@ class Crew
     y += 50;
     fill(206,99,99);
     textSize(36);
-    text("Name: "+c.Fname+c.Lname, x, y);
+    text("Name: "+c.Fname+" "+c.Lname, x, y);
     y += 40;
     text("Weight: "+c.weight, x, y);
     y += 40;
@@ -167,7 +167,7 @@ class Crew
     y = height*.25;
     PImage profileIMG;
     profileIMG = loadImage(c.photo);
-    image(profileIMG, x,y);
+    image(profileIMG, x+25,y+10);
     popMatrix();
     
     textAlign(CENTER);
