@@ -6,7 +6,7 @@ Heads Up Display for a Sci-Fi Movie
 The concept for my OOP assignment is based on a Star Trek-esque Sick Bay HUD/UI.  
 The video below give a basic demonstration of the functionality of the program and the expected user interactions. 
 
-Click image below to play video: (https://youtu.be/NytrvnN8dhk)
+Click image below to play video:
 
 [![Video](http://img.youtube.com/vi/NytrvnN8dhk/0.jpg)](http://www.youtube.com/watch?v=NytrvnN8dhk)
 
@@ -97,8 +97,8 @@ need to close the program window manually, it will self-terminate.
 - getting Conway's Game of Life into my program!
 - ensuring that the program does not continue if no crew member is selected (error checking)
 - the uniformity and clarity of my display screens, overall pleasing appearance
-- terminating the program at the user's request rather than self-terminating
 - being able to flip back and forth between screens to allow the user full control over what they see
+- terminating the program at the user's request rather than self-terminating
 
 That's it, I hope you enjoy playing around with it.<br>
 <b>~ Engage!</b>
