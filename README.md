@@ -31,9 +31,7 @@ This screen displays for a few seconds using a frameCount check, then disappears
 ![Main Splash](/screenshots/mainSplash.jpg?raw=true "Main Splash")
 
 After the main splash screen has been wiped, the user is presented with a new screen, the Crew Manifest table. 
-Here the user can select a crew member that they want to review. 
-
-![Crew Manifest](/screenshots/crewManifestScreen.jpg?raw=true "Crew Manifest")
+Here the user can select a crew member that they want to review by simply clicking on that crew member's name in the table. 
 
 Once a crew member is selected from the list, their name is displayed in the field at the top of the table i.e. 
 "Crew Member Selected: Beverly Crusher". The user can then proceed to the Main Menu to view Beverly Crusher's medical records.
@@ -43,31 +41,36 @@ If the user does not select a crew member from the Crew Manifest table, but sele
 the program will termninate softly with an exit splash screen. This to prevent the program displaying any data that is not 
 associated with a crew member. 
 
-Once inside the Main Menu, the user is shown a number of buttons: "Blood Cultures", "Chemistry Panel", "ECG" and "Exit MedLab System".
+![Crew Manifest](/screenshots/crewManifestScreen.jpg?raw=true "Crew Manifest")
+
+Once inside the Main Menu, the user is shown a number of menu option buttons: "Blood Cultures", "Chemistry Panel", "ECG" and "Exit MedLab System".
 These buttons allow the user to further interact, clicking the buttons will bring the user to a new display where they can 
-review the chosen crew member's medical record for that particular fields i.e. Beverly Crusher's Echocardiogram, etc
+review the chosen crew member's medical record for that particular menu option i.e. Beverly Crusher's Echocardiogram, etc
 
 ![Main Menu](/screenshots/mainMenu.jpg?raw=true "Main Menu")
 
-Below are screen shots from the medical options available to the user. 
+Below are screen shots from the internal displays of the menu options available to the user. 
 Each crew member has different medical records and as such, their records display unique values or animations.
 These unique values are identified in the file "medRecords.csv" which is loaded at the start of the sketch. 
 
-The chemistry panel is .......
+The chemistry panel is made up of values that are associated with a humanoid chemistry panel, ordered by a doctor 
+as part of any medical check up. As all the crew members are humanoid, I have suggested with this option that they 
+would share common chemistries. Values are unique for each user and are displayed to the screen using a map() of 
+the values in the CSV file. 
 
 ![Chemistry Panel](/screenshots/chemPanel.jpg?raw=true "Chemistry Panel")
 
-The Blood Culture option is actually a miniature version of John Conway's Game of Life. The idea is that we are looking at the 
+The Blood Culture menu option is actually a miniature version of John Conway's Game of Life. The idea is that we are looking at the 
 crew member's blood cells under a microscope. The aminations differ for each crew member selected, by taking the value assigned 
 for a crew member's Species Code in the CSV file. This value is passed as a parameter to the Bacteria class and determines the 
 colour of the cells in the animation. This is to reflect crew member's of different species having different blood cultures.  
 
 ![Blood Culture](/screenshots/bloodCulture.jpg?raw=true "Blood Culture")
 
-The ECG option is animated using a sine wave function. An initial white base line is drawn using a for loop, with the
+The ECG menu option is animated using a sine wave function. An initial white base line is drawn using a for loop, with the
 three sine waves being rendered using an single function call to draw one wave, and then a pushMatrix(), popMatrix() and translate() 
 to render the additional lines. The speed of the ECG is different for each crew member to reflect their personal heart rate. 
-It is based on a specific value set in the original CSV file which is passed to the ECG class when that option is 
+It is based on a specific value set in the original CSV file which is passed to the ECG class when that menu option is 
 selected by the user in the Main Menu. 
 
 ![Echocardiogram](/screenshots/echocardiogram.jpg?raw=true "Echocardiogram")
@@ -85,6 +88,7 @@ need to close the program window manually, it will self-terminate.
 Items I'm Proud Of:
 - manipulating the sine wave function in the ECG class
 - getting Conway's Game of Life into my program!
+- ensuring that the program does not continue if no crew member is selected (error checking)
 - the uniformity and clarity of my display screens, overall pleasing appearance
 - terminating the program at the user's request rather than self-terminating
 - being able to flip back and forth between screens to allow the user full control over what they see
