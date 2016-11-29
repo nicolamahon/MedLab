@@ -52,7 +52,7 @@ Below are screen shots from the internal displays of the menu options available 
 Each crew member has different medical records and as such, their records display unique values or animations.
 These unique values are identified in the file "medRecords.csv" which is loaded at the start of the sketch. 
 
-<b>CHEMISTRY PANEL</b>
+<b>CHEMISTRY PANEL:</b>
 The chemistry panel is made up of values that are associated with a humanoid chemistry panel, ordered by a doctor 
 as part of any medical check up. As all the crew members are humanoid, I have suggested with this option that they 
 would share common chemistries. Values are unique for each user and are displayed to the screen using a map() of 
@@ -60,13 +60,15 @@ the values in the CSV file.
 
 ![Chemistry Panel](/screenshots/chemPanel.jpg?raw=true "Chemistry Panel")
 
-The Blood Culture menu option is actually a miniature version of John Conway's Game of Life. The idea is that we are looking at the 
+<b>BLOOD CULTURES:</b>
+The Blood Cultures menu option is actually a miniature version of John Conway's Game of Life. The idea is that we are looking at the 
 crew member's blood cells under a microscope. The aminations differ for each crew member selected, by taking the value assigned 
 for a crew member's Species Code in the CSV file. This value is passed as a parameter to the Bacteria class and determines the 
 colour of the cells in the animation. This is to reflect crew member's of different species having different blood cultures.  
 
 ![Blood Culture](/screenshots/bloodCulture.jpg?raw=true "Blood Culture")
 
+<b>ECHOCARDIOGRAM:</b>
 The ECG menu option is animated using a sine wave function. An initial white base line is drawn using a for loop, with the
 three sine waves being rendered using an single function call to draw one wave, and then a pushMatrix(), popMatrix() and translate() 
 to render the additional lines. The speed of the ECG is different for each crew member to reflect their personal heart rate. 
@@ -76,8 +78,9 @@ selected by the user in the Main Menu.
 ![Echocardiogram](/screenshots/echocardiogram.jpg?raw=true "Echocardiogram")
 
 At any point in the program the user can return to the Crew Manifest by selecting the "Crew Mainfest" button, which appears on each 
-display page. The user can select any crew member and view their records by accessing the options in the Main Menu. 
+display page. The user can select any crew member and view their records by accessing the various menu options in the Main Menu. 
 
+<b>Terminating the Program</b>
 Once the user is finished their analysis, the user can click the final button on the Main Menu, named "Exit MedLab System".
 Clicking this button will terminate the program with an exit splash screen. The splash screen display is delayed using a frameCount check.
 This allows enough time for the user to see the exit splash, telling them that the program is exiting. The user does not 
@@ -85,7 +88,7 @@ need to close the program window manually, it will self-terminate.
 
 ![Exit Splash](/screenshots/exitSplash.jpg?raw=true "Exit Splash")
 
-Items I'm Proud Of:
+<b>Items I'm Proud Of:</b>
 - manipulating the sine wave function in the ECG class
 - getting Conway's Game of Life into my program!
 - ensuring that the program does not continue if no crew member is selected (error checking)
