@@ -80,8 +80,11 @@ need to close the program window manually, it will self-terminate.
 
 ![Exit Splash](/screenshots/exitSplash.jpg?raw=true "Exit Splash")
 
-Items of Note: 
-- The ECG records are displayed using a sine wave function. An initial white base line is drawn using a for loop, with the the 
-three sine waves being rendered using an single function call to draw one wave, and then a pushMatrix(), popMatrix() and translate 
-to render the additional lines. The speed of the ECG is different for each crew member. It is based on a specific value set in the 
-original CSV file.  
+Items I'm Proud Of:
+- manipulating the sine wave function in the ECG class
+- getting Conway's Game of Life into my program!
+- the uniformity and clarity of my display screens, overall pleasing appearance
+- terminating the program at the user's request rather than self-terminating
+- being able to flip back and forth between screens to allow the user full control over what they see
+
+That's it, I hope you enjoy playing around with it. 
