@@ -2,7 +2,7 @@
 HUD OOP CA Semester1 Year2
 
 The concept for my OOP assignment is based on a Star Trek-esque Sick Bay HUD/UI.  
-The videos below give a basic demonstration of the functionality of the program and the expected user interactions. 
+The video below give a basic demonstration of the functionality of the program and the expected user interactions. 
 
 CLICK THE IMAGE BELOW TO PLAY VIDEO
 (Alt Link: https://youtu.be/NytrvnN8dhk)
@@ -14,8 +14,10 @@ mouseClicked() function inside my sketch which is checking to see if various are
 Once a specific button or item is clicked, state flags are set to true or false, and global variables 
 are updated. This allows the program to progress to new areas with the data selected by the user.
 
-The basic concept for the user is to select a crew member from a list diplayed to them, and from there to proceed to 
-a main menu where they are able to view the medical records for that individual user. 
+The basic concept from the user's point of view is, to select a crew member from a list diplayed to them, and from there to proceed to 
+a main menu where they are able to view the medical records for that individual user. They have control over what records are displayed
+and which crew member they want to view. They can freely move between screens and swap in and out of different crew members records at any 
+time during the program. 
 
 Data for each crew member is unique and is held in a CSV file which the program loads into an arrayList when setup() is called. 
 A 'Crew' class is used to parse the data into rows and and load the values into global variables which are saved in the arrayList.
@@ -47,14 +49,18 @@ review the chosen crew member's medical record for that particular fields i.e. B
 
 Below are screen shots from the medical fields available to the user. 
 
-![Echocardiogram](/screenshots/echocardiogram.jpg?raw=true "Echocardiogram")
-
 ![Chemistry Panel](/screenshots/chemPanel.jpg?raw=true "Chemistry Panel")
 
 ![Blood Culture](/screenshots/bloodCulture.jpg?raw=true "Blood Culture")
+
+![Echocardiogram](/screenshots/echocardiogram.jpg?raw=true "Echocardiogram")
 
 At any point in the program the user can return to the Crew Manifest by selecting that button, which appears on each 
 display page. The user can switch between crew members and view their records by accessing the options in the Main Menu. 
 
 Once the user is finished their analysis, the user can click the final button on the Main Menu, named "Exit MedLab System".
-Clicking this button will terminate the program with an exit splash screen. 
+Clicking this button will terminate the program with an exit splash screen. The splash screen display is delayed using a frameCount check.
+This allows enought time for the user to see the exit splash, telling them that the program is exiting. The user does not 
+need to close the program window manually, it will self-terminate. 
+
+![Exit Splash](/screenshots/exitSplash.jpg?raw=true "Exit Splash")
