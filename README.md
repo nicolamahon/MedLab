@@ -4,10 +4,9 @@ HUD OOP CA Semester1 Year2
 The concept for my OOP assignment is based on a Star Trek-esque Sick Bay HUD/UI.  
 The video below give a basic demonstration of the functionality of the program and the expected user interactions. 
 
-Click image below to play video:
+Click image below to play video: (https://youtu.be/NytrvnN8dhk)
 
 [![Video](http://img.youtube.com/vi/NytrvnN8dhk/0.jpg)](http://www.youtube.com/watch?v=NytrvnN8dhk)
-(Alt Link: https://youtu.be/NytrvnN8dhk)
 
 The basic functionality of the program involves the user selecting a crew member from a list. This selection triggers a 
 mouseClicked() function inside my sketch which is checking to see if various areas of this screen are clicked by the user. 
@@ -38,7 +37,7 @@ Once a crew member is selected from the list, their name is displayed in the fie
 
 Error Checking:
 If the user does not select a crew member from the Crew Manifest table, but selects to enter the Main Menu immediately, 
-the program will termninate softly with an exit splash screen. This to prevent the program displaying any data that is not 
+the program will terminate softly with an exit splash screen. This to prevent the program displaying any data that is not 
 associated with a crew member. 
 
 ![Crew Manifest](/screenshots/crewManifestScreen.jpg?raw=true "Crew Manifest")
@@ -53,6 +52,7 @@ Below are screen shots from the internal displays of the menu options available 
 Each crew member has different medical records and as such, their records display unique values or animations.
 These unique values are identified in the file "medRecords.csv" which is loaded at the start of the sketch. 
 
+<b>CHEMISTRY PANEL</b>
 The chemistry panel is made up of values that are associated with a humanoid chemistry panel, ordered by a doctor 
 as part of any medical check up. As all the crew members are humanoid, I have suggested with this option that they 
 would share common chemistries. Values are unique for each user and are displayed to the screen using a map() of 
@@ -93,4 +93,5 @@ Items I'm Proud Of:
 - terminating the program at the user's request rather than self-terminating
 - being able to flip back and forth between screens to allow the user full control over what they see
 
-That's it, I hope you enjoy playing around with it. 
+That's it, I hope you enjoy playing around with it.
+~ Engage!
