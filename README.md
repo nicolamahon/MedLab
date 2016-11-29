@@ -14,5 +14,7 @@ to display various animations which have further interactions.
 
 The user is initially shown a splash screen to welcome them to the "United Federation of Planets, MedLab System".
 
-![Main Splash Screen](/master/screenshots/mainSplash.jpg?raw=true "Main Splash Screen")
+![Main Splash Screen](/screenshots/mainSplash.jpg?raw=true "Main Splash Screen")
+
+
 https://github.com/nicolamahon/MedLab/blob/master/screenshots/mainSplash.jpg?raw=true
